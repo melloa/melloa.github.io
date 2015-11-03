@@ -65,6 +65,20 @@ body {
     background-color: #101214;
     opacity: 1;
 }
+
+#about-content { display:none; } 
+#project-content{ display:none; } 
+#download-content{ display:none; } 
+#contact-content{ display:none; } 
+
+.content {
+    margin: auto;
+    width: 80%;
+    height: 400px;
+    background: #000;
+    padding: 50px;
+}
+
 .opening_image {
     height: 100%;
     left: 0;
@@ -83,4 +97,4 @@ body {
     margin-bottom: auto;
     margin-top: 300px;
     text-align: center;
-}=
+}
