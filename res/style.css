@@ -1,22 +1,3 @@
-
-@font-face {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 800;
-    src: url("fonts/opensans-extrabold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/opensans-extrabold-webfont.woff2") format("woff2"), url("fonts/opensans-extrabold-webfont.woff") format("woff"), url("fonts/opensans-extrabold-webfont.ttf") format("truetype"), url("fonts/opensans-extrabold-webfont.svg#open_sanslight") format("svg");
-}
-@font-face {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 600;
-    src: url("fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/opensans-semibold-webfont.woff2") format("woff2"), url("fonts/opensans-semibold-webfont.woff") format("woff"), url("fonts/opensans-regular-webfont.ttf") format("truetype"), url("fonts/opensans-semibold-webfont.svg#open_sansregular") format("svg");
-}
-@font-face {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 400;
-    src: url("fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/opensans-regular-webfont.woff2") format("woff2"), url("fonts/opensans-regular-webfont.woff") format("woff"), url("fonts/opensans-regular-webfont.ttf") format("truetype"), url("fonts/opensans-regular-webfont.svg#open_sansregular") format("svg");
-}
 body {
     color: #3F3F3F;
     font-family: "Open Sans",sans-serif;
@@ -24,7 +5,9 @@ body {
     font-weight: 400;
     line-height: 1.625;
     overflow-x: scroll;
+	background: url(rocket-bg.gif);
 }
+
 #navbar {
     background: #3F3F3F none repeat scroll 0 0;
     float: left;
@@ -38,6 +21,7 @@ body {
     width: 100%;
     z-index: 100;
 }
+
 #navbar a.left {
     color: #fff;
     float: left;
@@ -52,31 +36,33 @@ body {
     display: none;
     float: right;
     font-family: "Open Sans";
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     letter-spacing: 1px;
-    margin-top: -2px;
     opacity: 0.75;
     padding-left: 45px;
     padding-right: 70px;
     text-decoration: none;
 }
+
 #navbar a:hover {
     background-color: #101214;
     opacity: 1;
 }
 
-#about-content { display:none; } 
-#project-content{ display:none; } 
-#download-content{ display:none; } 
-#contact-content{ display:none; } 
-
 .content {
-    margin: auto;
-    width: 80%;
+    background: #efefef none repeat scroll 0 0;
+    border: 3px solid #3f3f3f;
     height: 400px;
-    background: #000;
-    padding: 50px;
+	display: none;
+    padding-bottom: 6%;
+    padding-left: 6%;
+    padding-right: 6%;
+    width: 75%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .opening_image {
@@ -86,8 +72,8 @@ body {
     top: 0;
     width: 100%;
     z-index: 0;
-    background: url(rocket-bg.gif);
 }
+
 .opening_image h1 {
     color: #3F3F3F;
     font-family: "Open Sans",sans-serif;
@@ -98,3 +84,22 @@ body {
     margin-top: 300px;
     text-align: center;
 }
+
+h2 {
+    color: #3f3f3f;
+    font-family: "Open Sans",sans-serif;
+    font-size: 70px;
+
+}
+
+h3 {
+	color: #3f3f3f;
+    font-family: "Open Sans",sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#about-content { display:none; } 
+#project-content{ display:none; } 
+#download-content{ display:none; } 
+#contact-content{ display:none; } 

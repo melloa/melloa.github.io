@@ -3,31 +3,32 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="res/style.css">
+		<link rel="stylesheet" href="res/style_fonts.css">
 		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
 		<script type='text/javascript'>
 		//<![CDATA[
 		$(window).load(function(){
 			$('#about-btn').click(function(e){    
 				$('#download-content, #project-content').fadeOut('slow', function(){
-					$('#about-content').fadeIn('slow');
+					$('#about-content, .content, a.right').fadeIn('slow');
 				});
 			});
 
 			$('#project-btn').click(function(e){    
 				$('#about-content, #download-content, #contact-content').fadeOut('slow', function(){
-					$('#project-content').fadeIn('slow');
+					$('#project-content, .content, a.right').fadeIn('slow');
 				});
 			});
 
 			$('#download-btn').click(function(e){    
 				$('#about-content, #project-content, #contact-content').fadeOut('slow', function(){
-					$('#download-content').fadeIn('slow');
+					$('#download-content, .content, a.right').fadeIn('slow');
 				});
 			});
 
 			$('#contact-btn').click(function(e){    
 				$('#about-content, #download-content, #project-content').fadeOut('slow', function(){
-					$('#contact-content').fadeIn('slow');
+					$('#contact-content, .content, a.right').fadeIn('slow');
 				});
 			});
 		});//]]> 
@@ -41,7 +42,7 @@
 				<a class="left" href="#">Blog</a>
 				<a id="download-btn" class="left" href="#">Downloads</a>
 				<a id="contact-btn" class="left" href="#">Contact</a>
-				<a class="right" href="">andrew mello</a>
+				<a class="right" href="">ANDREW MELLO</a>
 			</nav>
 		</header>
 		<section>
@@ -52,7 +53,19 @@
 		<section>
 			<div class="content">
 				<div id="about-content">about about about about about about about about about about </div>
-				<div id="project-content">project project project project project project project </div>
+				<div id="project-content">
+					<h2>PROJECTS</h2>
+					<h3>Smartwatch</h3>
+					<p> The design of the watch was built on the philosophy that the practicality
+						of a smartwatch does not require the powerful internals of the mainstream watches. Effective
+						watches will be the ones that work well and priced that the average person can justify the costs.
+						My watch was built with the intent to be produced for under $25. It's form factor will be modelled 
+						after a Timex Weekender. The internals will be ATMEGA microcontroller, OLED display, inertial measurement unit
+						for gesture based UI, heart rate monitor for fitness tracking, and 
+						Bluetooth 4 Low Energy for communication. 
+						Also currently designing an Android app for pairing and settings menu.
+					</p>
+				</div>
 				<div id="download-content">download download download download download download </div>
 				<div id="contact-content">contact contact contact contact contact contact contact contact </div>
 			</div>
