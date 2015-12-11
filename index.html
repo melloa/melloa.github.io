@@ -1,74 +1,179 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="res/style.css">
-		<link rel="stylesheet" href="res/style_fonts.css">
-		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-		<script type='text/javascript'>
-		//<![CDATA[
-		$(window).load(function(){
-			$('#about-btn').click(function(e){    
-				$('#download-content, #project-content').fadeOut('slow', function(){
-					$('#about-content, .content, a.right').fadeIn('slow');
-				});
-			});
-
-			$('#project-btn').click(function(e){    
-				$('#about-content, #download-content, #contact-content').fadeOut('slow', function(){
-					$('#project-content, .content, a.right').fadeIn('slow');
-				});
-			});
-
-			$('#download-btn').click(function(e){    
-				$('#about-content, #project-content, #contact-content').fadeOut('slow', function(){
-					$('#download-content, .content, a.right').fadeIn('slow');
-				});
-			});
-
-			$('#contact-btn').click(function(e){    
-				$('#about-content, #download-content, #project-content').fadeOut('slow', function(){
-					$('#contact-content, .content, a.right').fadeIn('slow');
-				});
-			});
-		});//]]> 
-		</script>
-	</head>
-	<body>
-		<header id="navbar">
-			<nav role="navigation">
-				<a id="about-btn" class="left" href="#">About</a>
-				<a id="project-btn" class="left" href="#">Projects</a>
-				<a class="left" href="#">Blog</a>
-				<a id="download-btn" class="left" href="#">Downloads</a>
-				<a id="contact-btn" class="left" href="#">Contact</a>
-				<a class="right" href="">ANDREW MELLO</a>
-			</nav>
-		</header>
-		<section>
-			<div class="opening_image">
-				<h1>ANDREW MELLO</h1>
-			</div>
-		</section>
-		<section>
-			<div class="content">
-				<div id="about-content">about about about about about about about about about about </div>
-				<div id="project-content">
-					<h2>PROJECTS</h2>
-					<h3>Smartwatch</h3>
-					<p> The design of the watch was built on the philosophy that the practicality
-						of a smartwatch does not require the powerful internals of the mainstream watches. Effective
-						watches will be the ones that work well and priced that the average person can justify the costs.
-						My watch was built with the intent to be produced for under $25. It's form factor will be modelled 
-						after a Timex Weekender. The internals will be ATMEGA microcontroller, OLED display, inertial measurement unit
-						for gesture based UI, heart rate monitor for fitness tracking, and 
-						Bluetooth 4 Low Energy for communication. 
-						Also currently designing an Android app for pairing and settings menu.
-					</p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <link rel="stylesheet" type="text/css" href="res/bootstrap.min-modified.css">
+    <link rel="stylesheet" type="text/css" href="res/custom_addons.css">
+    <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="res/scripts/bootstrap.min.js"></script>	
+    </head>
+    <body data-spy="scroll" data-target="#myNavbar" data-offset="70">
+        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+							<a href="#about">
+								<b class="glyphicon glyphicon-user"></b>
+								  About
+							</a>
+						</li>
+                        <li>
+							<a href="#downloads">
+								<b class="glyphicon glyphicon-circle-arrow-down"></b>
+								  Downloads
+							</a>
+						</li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<b class="glyphicon glyphicon-wrench"></b>
+								 Projects <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#projects">All</a></li>
+								<li class="divider"></li>
+								<li><a href="#pSmartwatch">Smartwatch</a></li>
+								<li><a href="#pIntervalomathing">Intervalomathing</a></li>
+								<li><a href="#pQtX">QtX</a></li>
+								<li><a href="#pController">Accessible Game Controller</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#contact">							
+								<b class="glyphicon glyphicon-pencil"></b>
+								 Contact
+							 </a>
+						</li>
+                    </ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="name-logo" href="#">ANDREW MELLO</a></li>
+					</ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron container">
+            <div class="container-fluid">
+                <h1 class="opening_image">ANDREW MELLO</h1>
+            </div>
+        </div>
+        <div class="container">
+			<br><br>
+			<div id="about" class="row">
+				<h2 class="custom">ABOUT</h2>
+				<div class="col-md-4 hiddenh-md hidden-sm hidden-xs">
+					<div class="demo-content"></div>
 				</div>
-				<div id="download-content">download download download download download download </div>
-				<div id="contact-content">contact contact contact contact contact contact contact contact </div>
+				<div class="col-md-8">
+					<div class="demo-content bg-alt">
+						<p class="content">
+							Hello World and welcome to my site. This is my personal webpage that I use for some of my ongoing projects, cataloging past projects, and posting downloads to solutions I have made. Feel free to contact me in the form below.
+						</p>
+					</div>
+				</div>
 			</div>
-		</section>
-	</body>
-</html>
+			<hr>
+			<br><br>
+            <div id="downloads" class="row">
+				<h2 class="custom">DOWNLOADS</h2>
+                <div class="col-sm-4 text-justify">
+                    <h4>First Link</h4>
+                    <p>This is the location where I would a download link if I finished some software. Now there is just some justified text to fill the spot.</p>
+                    <p><a href="#" class="btn btn-primary btn-block">Download</a></p>
+                </div>
+                <div class="col-sm-4 text-justify">
+                    <h4>Second Link</h4>
+                    <p>Another location where I would a download link if I finished some software. Now there is just some justified text to fill the spot.</p>
+                    <p><a href="#" class="btn btn-primary btn-block">Download</a></p>
+                </div>
+                <div class="col-sm-4 text-justify">
+                    <h4>Third Link</h4>
+                    <p>Another location where I would a download link if I finished some software. Now there is just some justified text to fill the spot.</p>
+                    <p><a href="#" class="btn btn-primary btn-block">Download</a></p>
+                </div>
+            </div>
+			<hr>
+			<br><br>
+			<!--  Beginning of the Project section ---->
+			<div id="projects" class="row">
+				<br>
+				<h2 class="custom">PROJECTS</h2>
+				<!---- First Project ---->
+				<div id="pSmartwatch" class="col-sm-6">
+					<div class="thumbnail">
+						<img src="" alt="Image">
+						<div class="caption">
+							<h3>Smartwatch</h3>
+							<p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula. Cras justo odio, dapibus ac facilisis in quam.</p>
+							<p><a href="#" class="btn btn-primary">Learn More</a> <a href="#" class="btn btn-default">GitHub &rsaquo;</a></p>
+						</div>
+					</div>
+				</div>
+				<!---- Second Project ---->
+				<div id="pQtX" class="col-sm-6">
+					<div class="thumbnail">
+						<img src="" alt="Image">
+						<div class="caption">
+							<h3>QtX - Mobile Extension</h3>
+							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.</p>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-default">GitHub &rsaquo;</a></p>
+						</div>
+					</div>
+				</div>
+				<!---- Third Project ---->
+				<div id="pIntervalomathing" class="col-sm-6">
+					<div class="thumbnail">
+						<img src="" alt="Image">
+						<div class="caption">
+							<h3>Intervalomathing</h3>
+							<p>Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula. Cras justo odio, dapibus ac facilisis in quam.</p>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-default disabled">GitHub &rsaquo;</a></p>
+						</div>
+					</div>
+				</div>
+				<!---- Fourth Project ---->
+				<div id="pController" class="col-sm-6">
+					<div class="thumbnail">
+						<img src="" alt="Image">
+						<div class="caption">
+							<h3>Accessible Video Game Controller</h3>
+							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.</p>
+							<p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-default disabled">GitHub &rsaquo;</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<br><br>
+			 <div id="contact" class="row">
+				<h2 class="custom">CONTACT</h2>
+				<br>
+				<form>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						<input type="text" class="form-control" placeholder="First and Last Name">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+						<input type="text" class="form-control" placeholder="Email Address">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-question-sign"></span></span>
+						<input type="text" class="form-control" placeholder="Reasons for contacting">
+					</div>
+					<br>
+					<div>
+						<textarea rows="5" class="form-control" placeholder="Still under construction"></textarea>
+					</div>
+					<br>
+					<input type="reset" class="btn btn-default disabled" value="Send">
+				</form>
+				<br><br>
+			</div>
+        </div>
+    </body>
+    </html>
