@@ -1,0 +1,180 @@
+body {
+	background: url(halftone.png);
+	font-family: Verdana,sans-serif;
+	overflow-x: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+
+.slider {
+	margin-top: 15px;
+	margin-left: 25%;
+	width: 50%;
+}
+
+h1 {
+	color: #444;
+	font-family: "Arial";
+	font-size: 40px;
+	font-weight: 600;
+	margin: 8px;
+	text-align: center;
+}
+
+h4 {
+	color: #444;
+	font-family: "Arial";
+	font-size: 40px;
+	font-weight: 600;
+	margin: 2%;
+	text-align: center;
+}
+
+* {
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.overlay {
+	opacity:0.5;
+	filter: alpha(opacity=50);
+	background-color:#000; 
+	width:100%; 
+	height:100%; 
+	z-index:10;
+	top:0; 
+	left:0; 
+	position:fixed; 
+}
+
+div.popup {
+	position: fixed; 
+	left: 36%; top: 36%;
+	width: 50%; height: 430px;
+	margin-left: -200px; margin-top: -150px;
+	background: #FFF; 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px;
+	z-index: 10;
+	text-align: center;
+}
+
+hr {
+	margin-left: 5%;
+	margin-right: 5%;
+	border: none;
+	height: 1px;
+	background-color: #444;
+}
+ 
+.nav ul {
+	list-style: none;
+	background-color: #444;
+	height: 60px;
+	padding: 0;
+	margin: 0;
+}
+
+.nav img {
+    margin-left: 68.5%;
+    height: 50px;
+    margin-top: 6px;
+}
+
+.nav li {
+	display: inline-block;
+	font-size: 1.4em;
+	float: left;
+}
+
+.nav {
+	position:fixed;
+	left:0px;
+	top:0px;
+	height:61px;
+	width:100%;
+	border-bottom: 1px solid #999;
+}
+
+a.widgets {
+	border: solid #dddddd 1px;
+    border-radius: 5px;
+	color: #fff;
+	display: block;
+	font-weight: 800;
+	margin-top: 10px;
+	padding: 4px 9px 7px 9px;
+	transition: 0.5s background-color;
+	text-decoration: none;
+}
+ 
+a.widgets:hover {
+	background-color: #4584CC;
+}
+
+.control-btn {
+	background-color: #fff;
+	color: #444;
+    font-size: 16px;
+    padding: 8px 14px 8px 14px;
+	border: solid #444 1px;
+	text-decoration: none;
+}
+
+.control-btn:hover {
+	color: #fff;
+	background: #444;
+	text-decoration: none;
+}
+
+.delete-btn {
+	background-color: #fff;
+	color: #f00;
+    font-size: 16px;
+    padding: 8px 14px 8px 14px;
+	border: solid #f00 1px;
+	text-decoration: none;
+}
+
+.delete-btn:hover {
+	color: #fff;
+	background: #f00;
+	text-decoration: none;
+}
+
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:60px;
+   width:100%;
+   background-color: #fff;
+   border-top: 1px solid #bbb;
+}
+
+input.inputSlider {
+    border: 0 none;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+    width: 51px;
+}
+
+.modifying-popup { display: none; }
+
+input.remaining {
+    border: 0 none;
+	color: #444;
+	font-family: "Arial";
+	font-size: 40px;
+	font-weight: 600;
+    text-align: center;
+    width: 46px;
+}
+  
+  .glyphicon-cog:before{content:"\e019"}@font-face{font-family:'Glyphicons Halflings';src:url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}.glyphicon{position:relative;top:4px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.glyphicon-plus:before{content:"\2b"}
+  

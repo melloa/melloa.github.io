@@ -17,10 +17,35 @@
 			}
 		});
 		$( "#timebar" ).draggable({ axis: "x" });
+		$( "#timebar" ).click(function() {
+			$("#timebar h3").text("New header");
+		});
 	  });
 	  </script>
 	</head>
 	<body>
+		<nav class="navbar" role="navigation">
+			<ul>
+				<li>
+					<a href="#about">
+						<b class="glyphicon glyphicon-user"></b>
+						  Add New
+					</a>
+				</li>
+				<li>
+					<a href="#downloads">
+						<b class="glyphicon glyphicon-circle-arrow-down"></b>
+						  Unknown
+					</a>
+				</li>
+				<li>
+					<a href="#contact">							
+						<b class="glyphicon glyphicon-pencil"></b>
+						 Unknown
+					 </a>
+				</li>
+			</ul>
+        </nav>
 		<div class="graphArea">
 			<div id="timebar">
 				<h3>TIMELINE 1</h3>
