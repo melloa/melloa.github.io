@@ -1,0 +1,41 @@
+div.card {
+	width: 18vw;
+	height: 25vw;
+	background-color: #fff;
+	margin: 2%;
+	border: 1px solid #bbb;
+	border-radius: 0.4vw;
+}
+
+a.card {
+	color: #7f8c8d;
+	font-family: "Open Sans";
+	text-decoration: none;
+}
+
+a.card:hover {
+	background-color: #2980b9;
+	color: #fff;
+	transition: 0.8s;
+}
+
+hr.card {
+	color: #ddd;
+	background-color: #ddd;
+    height: 1px;
+    border: 0;
+    width: 100%;
+}
+
+h4 {
+	font-weight: 600;
+	font-size: 22px;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 200;
+}
+body {
+	font-family: "Open Sans";
+}
