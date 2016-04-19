@@ -17,12 +17,8 @@
 		function init()
 		{
 			canvas = document.getElementById("myCanvas");
-			canvas.width = document.body.clientWidth; //document.width is obsolete
-			canvas.height = document.body.clientHeight; //document.height is obsolete
-			canvasW = canvas.width;
-			canvasH = canvas.height;
-			
-			console.log(canvasW + "," + canvasH)
+			canvas.width = document.body.clientWidth;
+			canvas.height = document.body.clientHeight;
 		}
 		init();
       window.requestAnimFrame = (function(callback) {
@@ -87,19 +83,21 @@
 		var fontsize = (30 / 1440) * canvas.width; // 30px when on my monitor of 1440px 
 		var heightOfText = (460 / 790) * canvas.height;
 		if(changeSubtext){
+			var text = numberOfSayings < 3 ? subtext[index] : "Electrical engineer who codes";
 			subTextColor -= 0.01;
 			context.fillStyle = "rgba(255, 255, 255, " + Math.abs(subTextColor) + ")";
 			context.font="300 " + fontsize + "px Open Sans";
-			context.fillText(subtext[index], 100, heightOfText);
-			if(Math.abs(subTextColor) < 0.01) {
+			context.fillText(text, 100, heightOfText);
+			if(Math.round(subTextColor*100) == 0) {
 				var prev = index
+				numberOfSayings++;
 				while(prev == index) {
 					index = Math.floor(Math.random() * subtext.length);
 					console.log("Index is now: " + index);
 				}
 			}
 			
-			if(Math.abs(subTextColor) > 1) {
+			if(Math.abs(subTextColor) > 1 && numberOfSayings < 3) {
 				changeSubtext = false;
 				subTextColor = 1;
 				setTimeout(function() {
@@ -120,6 +118,7 @@
 	  var index = Math.floor(Math.random() * subtext.length);
 	  var changeSubtext = false;
 	  var subTextColor = 1.0;
+	  var numberOfSayings = 0;
 	  
       function createStar () {
         this.x = (Math.random() * 2 * canvas.width) - canvas.width,
@@ -159,15 +158,11 @@
 	  
 	  var waiting = false;
 	  
-      //drawStar(star, context);
-
-      // wait one second before starting animation
       setTimeout(function() {
         var startTime = (new Date()).getTime();
         animate(star, canvas, context, startTime);
       }, 1000);
 	  
-      // wait one second before starting animation
       setTimeout(function() {
 		changeSubtext = true;
       }, 2500);
