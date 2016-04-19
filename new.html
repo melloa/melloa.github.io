@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-    <html lang="en" style="background-color: #000; overflow: hidden">
+    <html lang="en" style="background-color: #000; overflow: hidden; height:100%">
     <head>
     <meta charset="utf-8">
     <title>The Man Behind the Legend</title>
@@ -10,11 +10,21 @@
     <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     </head>
-    <body data-spy="scroll" data-target="#myNavbar" data-offset="70">
-		<nav>
+    <body onresize="init()" style="margin:0;height:100%">
 			<a href="content.html">
-		<canvas id="myCanvas" width="1578" height="800"></canvas> </a>
+		<canvas id="myCanvas"  height="100%"></canvas> </a>
     <script>
+		function init()
+		{
+			canvas = document.getElementById("myCanvas");
+			canvas.width = document.body.clientWidth; //document.width is obsolete
+			canvas.height = document.body.clientHeight; //document.height is obsolete
+			canvasW = canvas.width;
+			canvasH = canvas.height;
+			
+			console.log(canvasW + "," + canvasH)
+		}
+		init();
       window.requestAnimFrame = (function(callback) {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
         function(callback) {
@@ -33,6 +43,7 @@
       function animate(star, canvas, context, startTime) {
         // update
 		var speed = 0;
+		var heightScale = canvas.height / 790;
 		for(var i = 0; i < star.length; i++) {
 			speed = 3 * star[i].r;//20;
 			// pixels / second
@@ -53,13 +64,14 @@
 		context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
 		rocket.move();
 		
+		var fontsize = (100 / 1440) * canvas.width; // 100px when on my monitor of 1440px 
 		context.fillStyle = '#999';
-		context.font="bold 100px Open Sans";
-		context.fillText("ANDREW MELLO", 102, 412);
+		context.font="bold " + fontsize + "px Open Sans";
+		context.fillText("ANDREW MELLO", 102, 412 * heightScale);
 		
 		context.fillStyle = '#fff';
-		context.font="bold 100px Open Sans";
-		context.fillText("ANDREW MELLO", 100, 410);
+		context.font="bold " + fontsize + "px Open Sans";
+		context.fillText("ANDREW MELLO", 100, 410 * heightScale);
 
 		for(var i = 0; i < star.length; i++)
 		drawStar(star[i], context);
@@ -72,11 +84,13 @@
       }
 	  
 	  function animateSubtext() {
+		var fontsize = (30 / 1440) * canvas.width; // 30px when on my monitor of 1440px 
+		var heightOfText = (460 / 790) * canvas.height;
 		if(changeSubtext){
 			subTextColor -= 0.01;
 			context.fillStyle = "rgba(255, 255, 255, " + Math.abs(subTextColor) + ")";
-			context.font="300 30px Open Sans";
-			context.fillText(subtext[index], 100, 460);
+			context.font="300 " + fontsize + "px Open Sans";
+			context.fillText(subtext[index], 100, heightOfText);
 			if(Math.abs(subTextColor) < 0.01) {
 				var prev = index
 				while(prev == index) {
@@ -94,8 +108,8 @@
 			}
 		} else {
 			context.fillStyle = "#fff";
-			context.font="300 30px Open Sans";
-			context.fillText(subtext[index], 100, 460);
+			context.font="300 " + fontsize + "px Open Sans";
+			context.fillText(subtext[index], 100, heightOfText);
 		}
 	  }
 	  
