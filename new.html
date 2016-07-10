@@ -1,171 +1,169 @@
-    <!DOCTYPE html>
-    <html lang="en" style="background-color: #000; overflow: hidden; height:100%">
-    <head>
+<!DOCTYPE html>
+<html lang="en" style="background-color: #000; overflow: hidden; height:100%">
+
+<head>
     <meta charset="utf-8">
     <title>The Man Behind the Legend</title>
     <link rel="stylesheet" type="text/css" href="res/custom_addons.css">
     <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
     <link rel="stylesheet" type="text/css" href="res/opensans/stylesheet.css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    </head>
-    <body onresize="init()" style="margin:0;height:100%">
-			<a href="content.html">
-		<canvas id="myCanvas"  height="100%"></canvas> </a>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-size: 16px;
+            font-family: "Open sans";
+            height: 100%;
+            margin: 0;
+        }
+
+        h1 {
+            color: white;
+            font-size: 5.75em;
+            margin-top: 34vh;
+            margin-bottom: 0;
+            text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
+        }
+
+        h2 {
+            font-weight: 200;
+            color: white;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        section {
+            margin-left: 7%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<body onresize="init()">
+    <section>
+        <h1>ANDREW MELLO</h1>
+        <h2>changing text goes here ... </h2>
+        <canvas id="myCanvas"></canvas>
+    </section>
     <script>
-		function init()
-		{
-			canvas = document.getElementById("myCanvas");
-			canvas.width = document.body.clientWidth;
-			canvas.height = document.body.clientHeight;
-		}
-		init();
-      window.requestAnimFrame = (function(callback) {
-        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-        function(callback) {
-          window.setTimeout(callback, 1000 / 60);
+        function init() {
+            canvas = document.getElementById("myCanvas");
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
+        }
+        init();
+        window.requestAnimFrame = (function(callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function drawStar(star, context) {
+            context.beginPath();
+            context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
+            context.fillStyle = '#ffffff';
+            context.fill();
+            context.lineWidth = star.borderWidth;
+        }
+
+        function animate(star, canvas, context, startTime) {
+            // clear
+            context.fillStyle = '#000000';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // update
+            var speed = 0;
+            var heightScale = canvas.height / 790;
+            for (var i = 0; i < star.length; i++) {
+                speed = 3 * star[i].r; //20;
+                // pixels / second
+                if (star[i].x < canvas.width && star[i].y < canvas.height) {
+                    star[i].x += speed;
+                    star[i].y += speed;
+                } else {
+                    star[i].x = (Math.random() * 2 * canvas.width) - canvas.width;
+                    star[i].y = -1 * 200 * Math.random();
+                    star[i].r = 6 * Math.random()
+                }
+            }
+
+            context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
+            rocket.move();
+
+            for (var i = 0; i < star.length; i++) {
+                drawStar(star[i], context);
+            }
+
+            // request new frame
+            requestAnimFrame(function() {
+                animate(star, canvas, context, startTime);
+            });
+        }
+
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var subtext = ["A man. A plan. Panama.", "A man of measure.", "Bobody. Biznus.", "Hands like a gazelle.", "The golden goose.", "The oracle of time.", "The Great Purveyor.",
+            "Buffalo buffalo buffalo buffalo. Buffalo.", "Thinly lather before basking in the sun", "Wash. Rinse. Repeat.", "The milk man.", "7 / 10 would recommend to a friend. 8 of 9 found this review helpful"
+        ];
+        var index = Math.floor(Math.random() * subtext.length);
+        var changeSubtext = false;
+        var subTextColor = 1.0;
+        var numberOfSayings = 0;
+
+        function createStar() {
+            this.x = (Math.random() * 2 * canvas.width) - canvas.width,
+                this.y = -1 * 100 * Math.random(),
+                this.r = 6 * Math.random()
         };
-      })();
 
-      function drawStar(star, context) {
-        context.beginPath();
-        context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
-        context.fillStyle = '#ffffff';
-        context.fill();
-        context.lineWidth = star.borderWidth;
-      }
-	  
-      function animate(star, canvas, context, startTime) {
-        // update
-		var speed = 0;
-		var heightScale = canvas.height / 790;
-		for(var i = 0; i < star.length; i++) {
-			speed = 3 * star[i].r;//20;
-			// pixels / second
-			if(star[i].x < canvas.width && star[i].y < canvas.height) {
-			  star[i].x += speed;
-			  star[i].y += speed;
-			} else {
-				star[i].x = (Math.random() * 2 * canvas.width) - canvas.width;
-				star[i].y = -1 * 200 * Math.random();
-				star[i].r = 6 * Math.random()
-			}
-		}
+        var star = [new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar()];
 
-        // clear
-		context.fillStyle = '#000000';
-		context.fillRect(0, 0, canvas.width, canvas.height);
-		
-		context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
-		rocket.move();
-		
-		var fontsize = (100 / 1440) * canvas.width; // 100px when on my monitor of 1440px 
-		context.fillStyle = '#999';
-		context.font="bold " + fontsize + "px Open Sans";
-		context.fillText("ANDREW MELLO", 102, 412 * heightScale);
-		
-		context.fillStyle = '#fff';
-		context.font="bold " + fontsize + "px Open Sans";
-		context.fillText("ANDREW MELLO", 100, 410 * heightScale);
+        var rocketImg = new Image();
+        rocketImg.src = 'res/rocket_left.png'
 
-		for(var i = 0; i < star.length; i++)
-		drawStar(star[i], context);
-			
-        // request new frame
-        requestAnimFrame(function() {
-          animate(star, canvas, context, startTime);
-		  animateSubtext()
-        }); 
-      }
-	  
-	  function animateSubtext() {
-		var fontsize = (30 / 1440) * canvas.width; // 30px when on my monitor of 1440px 
-		var heightOfText = (460 / 790) * canvas.height;
-		if(changeSubtext){
-			var text = numberOfSayings < 3 ? subtext[index] : "Electrical engineer who codes";
-			subTextColor -= 0.01;
-			context.fillStyle = "rgba(255, 255, 255, " + Math.abs(subTextColor) + ")";
-			context.font="300 " + fontsize + "px Open Sans";
-			context.fillText(text, 100, heightOfText);
-			if(Math.round(subTextColor*100) == 0) {
-				var prev = index
-				numberOfSayings++;
-				while(prev == index) {
-					index = Math.floor(Math.random() * subtext.length);
-					console.log("Index is now: " + index);
-				}
-			}
-			
-			if(Math.abs(subTextColor) > 1 && numberOfSayings < 3) {
-				changeSubtext = false;
-				subTextColor = 1;
-				setTimeout(function() {
-					changeSubtext = true;
-				}, 2000);
-			}
-		} else {
-			context.fillStyle = "#fff";
-			context.font="300 " + fontsize + "px Open Sans";
-			context.fillText(subtext[index], 100, heightOfText);
-		}
-	  }
-	  
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-	  var subtext = [ "A man. A plan. Panama.", "A man of measure.", "Bobody. Biznus.", "Hands like a gazelle.", "The golden goose.", "The oracle of time.", "The Great Purveyor.",
-			"Buffalo buffalo buffalo buffalo. Buffalo.", "Thinly lather before basking in the sun", "Wash. Rinse. Repeat.", "The milk man.", "7 / 10 would recommend to a friend. 8 of 9 found this review helpful" ];
-	  var index = Math.floor(Math.random() * subtext.length);
-	  var changeSubtext = false;
-	  var subTextColor = 1.0;
-	  var numberOfSayings = 0;
-	  
-      function createStar () {
-        this.x = (Math.random() * 2 * canvas.width) - canvas.width,
-        this.y = -1 * 100 * Math.random(),
-        this.r = 6 * Math.random()
-      };
-	  
-	  var star = [new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar()];
-	  
-	  var rocketImg = new Image();
-	  rocketImg.src = 'res/rocket_left.png'
-	  
-	  var rocket = {
-		x: canvas.width,
-		y: canvas.height,
-		width: 200,
-		height: 201,
-		move: function() {
-			rocket.x -= Math.random() * 3 - 1;
-			rocket.y -= Math.random() * 3 - 1;
-			if(!waiting) {
-				waiting = true;
-				setTimeout(function() {
-					rocketImg.src = (rocketImg.src.indexOf('res/rocket_right.png') >= 0) ? 'res/rocket_left.png' : 'res/rocket_right.png';
-					waiting = false;
-				}, 75);
-			}	
-			if(rocket.x + rocket.width < 0 || rocket.y + rocket.height < 0) {
-				rocket.x = Math.random() * canvas.width,
-				rocket.y = canvas.height;
-				var random = Math.random();
-				rocket.width = random * 300;
-				rocket.height = random * 300;
-			}
-		}
-	  }
-	  
-	  var waiting = false;
-	  
-      setTimeout(function() {
-        var startTime = (new Date()).getTime();
-        animate(star, canvas, context, startTime);
-      }, 1000);
-	  
-      setTimeout(function() {
-		changeSubtext = true;
-      }, 2500);
+        var rocket = {
+            x: canvas.width,
+            y: canvas.height,
+            width: 200,
+            height: 201,
+            move: function() {
+                rocket.x -= Math.random() * 3 - 1;
+                rocket.y -= Math.random() * 3 - 1;
+                if (!waiting) {
+                    waiting = true;
+                    setTimeout(function() {
+                        rocketImg.src = (rocketImg.src.indexOf('res/rocket_right.png') >= 0) ? 'res/rocket_left.png' : 'res/rocket_right.png';
+                        waiting = false;
+                    }, 75);
+                }
+                if (rocket.x + rocket.width < 0 || rocket.y + rocket.height < 0) {
+                    rocket.x = Math.random() * canvas.width;
+                    rocket.y = canvas.height;
+                    var random = Math.random();
+                    rocket.width = random * 300;
+                    rocket.height = random * 300;
+                }
+            }
+        }
+
+        var waiting = false;
+
+        setTimeout(function() {
+            var startTime = (new Date()).getTime();
+            animate(star, canvas, context, startTime);
+        }, 1000);
+
+        setTimeout(function() {
+            changeSubtext = true;
+        }, 2500);
     </script>
-    </body>
-    </html>
+</body>
+
+</html>
