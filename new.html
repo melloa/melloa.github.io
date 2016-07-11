@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #000; overflow: hidden; height:100%">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,12 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
+            background-color: #000;
             font-size: 16px;
             font-family: "Open sans";
             height: 100%;
@@ -39,9 +44,23 @@
 
         section {
             margin-left: 7%;
+            height: 66%;
+        }
+
+        div {
+            /*, #16a085 75%, #16a085 76%, #2ecc71 76%, #8cc732*/
+            background: linear-gradient(transparent, #2c3e50 25%, rgb(154, 204, 245) 75%);
             height: 100%;
         }
 
+        article {
+            background: rgb(154, 204, 245);
+            height: 100%;
+        }
+
+        .planet {
+            margin-top: 66%;
+        }
     </style>
 </head>
 
@@ -51,11 +70,15 @@
         <h2>changing text goes here ... </h2>
         <canvas id="myCanvas"></canvas>
     </section>
+    <div>
+    </div>
+    <article>
+    </article>
     <script>
         function init() {
             canvas = document.getElementById("myCanvas");
             canvas.width = document.body.clientWidth;
-            canvas.height = document.body.clientHeight;
+            canvas.height = document.body.clientHeight * 1.2;
         }
         init();
         window.requestAnimFrame = (function(callback) {
