@@ -51,6 +51,32 @@
             /*, #16a085 75%, #16a085 76%, #2ecc71 76%, #8cc732*/
             background: linear-gradient(transparent, #2c3e50 25%, rgb(154, 204, 245) 75%);
             height: 100%;
+            color: white;
+        }
+
+        nav {
+            padding-top: 500px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        nav> a {
+            color: white;
+            text-decoration: none;
+            padding-top: 0.1em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            padding-bottom: 0.2em;
+        }
+
+        nav> a:hover {
+            background-color: #34495e;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav> span {
+            font-weight: 200;
         }
 
         article {
@@ -71,6 +97,13 @@
         <canvas id="myCanvas"></canvas>
     </section>
     <div>
+        <nav>
+            <span>scroll to:</span>
+            <a href="#">about</a>
+            <a href="#">projects</a>
+            <a href="#">resumé</a>
+            <a href="#">contact</a>
+        </nav>
     </div>
     <article>
     </article>
@@ -89,6 +122,16 @@
         })();
 
         function drawStar(star, context) {
+            var speed = 3 * star.r;
+            // pixels / second
+            if (star.x < canvas.width && star.y < canvas.height) {
+                star.x += speed;
+                star.y += speed;
+            } else {
+                star.x = (Math.random() * 2 * canvas.width) - canvas.width;
+                star.y = -1 * 200 * Math.random();
+                star.r = 6 * Math.random()
+            }
             context.beginPath();
             context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
             context.fillStyle = '#ffffff';
@@ -100,30 +143,12 @@
             // clear
             context.fillStyle = '#000000';
             context.fillRect(0, 0, canvas.width, canvas.height);
-
             // update
-            var speed = 0;
-            var heightScale = canvas.height / 790;
-            for (var i = 0; i < star.length; i++) {
-                speed = 3 * star[i].r; //20;
-                // pixels / second
-                if (star[i].x < canvas.width && star[i].y < canvas.height) {
-                    star[i].x += speed;
-                    star[i].y += speed;
-                } else {
-                    star[i].x = (Math.random() * 2 * canvas.width) - canvas.width;
-                    star[i].y = -1 * 200 * Math.random();
-                    star[i].r = 6 * Math.random()
-                }
-            }
-
-            context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
-            rocket.move();
-
             for (var i = 0; i < star.length; i++) {
                 drawStar(star[i], context);
             }
-
+            context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
+            rocket.move();
             // request new frame
             requestAnimFrame(function() {
                 animate(star, canvas, context, startTime);
@@ -132,13 +157,9 @@
 
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
-        var subtext = ["A man. A plan. Panama.", "A man of measure.", "Bobody. Biznus.", "Hands like a gazelle.", "The golden goose.", "The oracle of time.", "The Great Purveyor.",
+        var tagline = ["A man. A plan. Panama.", "A man of measure.", "Bobody. Biznus.", "Hands like a gazelle.", "The golden goose.", "The oracle of time.", "The Great Purveyor.",
             "Buffalo buffalo buffalo buffalo. Buffalo.", "Thinly lather before basking in the sun", "Wash. Rinse. Repeat.", "The milk man.", "7 / 10 would recommend to a friend. 8 of 9 found this review helpful"
         ];
-        var index = Math.floor(Math.random() * subtext.length);
-        var changeSubtext = false;
-        var subTextColor = 1.0;
-        var numberOfSayings = 0;
 
         function createStar() {
             this.x = (Math.random() * 2 * canvas.width) - canvas.width,
@@ -146,7 +167,9 @@
                 this.r = 6 * Math.random()
         };
 
-        var star = [new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar(), new createStar()];
+        var star = [new createStar(), new createStar(), new createStar(), new createStar(),
+            new createStar(), new createStar(), new createStar(), new createStar()
+        ];
 
         var rocketImg = new Image();
         rocketImg.src = 'res/rocket_left.png'
