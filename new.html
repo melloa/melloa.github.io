@@ -5,11 +5,8 @@
     <meta charset="utf-8">
     <title>The Man Behind the Legend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="res/custom_addons.css">
     <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
-    <link rel="stylesheet" type="text/css" href="res/opensans/stylesheet.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <style>
         html {
             height: 100%;
@@ -113,7 +110,8 @@
 <body onresize="init()">
     <section>
         <h1>ANDREW MELLO</h1>
-        <h2>changing text goes here ... </h2>
+        <!-- Center vertically (??), Looks weird in mobile landscape-->
+        <h2>... ... ... </h2>
         <canvas id="myCanvas"></canvas>
     </section>
     <div>
@@ -128,12 +126,16 @@
     <article>
     </article>
     <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+
         function init() {
             canvas = document.getElementById("myCanvas");
             canvas.width = document.body.clientWidth;
             canvas.height = document.body.clientHeight * 1.2;
+            animate(star, canvas, context);
         }
-        init();
+
         window.requestAnimFrame = (function(callback) {
             return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
                 function(callback) {
@@ -146,10 +148,11 @@
             // pixels / second
             if (star.x < canvas.width && star.y < canvas.height) {
                 star.x += speed;
-                star.y += speed;
+                star.y += speed * 0.6;
             } else {
+                var height = canvas.height / 2;
                 star.x = (Math.random() * 2 * canvas.width) - canvas.width;
-                star.y = -1 * 200 * Math.random();
+                star.y = -1 * height * Math.random() + (height / 2);
                 star.r = 6 * Math.random()
             }
             context.beginPath();
@@ -159,7 +162,7 @@
             context.lineWidth = star.borderWidth;
         }
 
-        function animate(star, canvas, context, startTime) {
+        function animate(star, canvas, context) {
             // clear
             context.fillStyle = '#000000';
             context.fillRect(0, 0, canvas.width, canvas.height);
@@ -167,18 +170,28 @@
             for (var i = 0; i < star.length; i++) {
                 drawStar(star[i], context);
             }
-            context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
+            // draw rocket
+            //context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
             rocket.move();
             // request new frame
             requestAnimFrame(function() {
-                animate(star, canvas, context, startTime);
+                animate(star, canvas, context);
             });
         }
-
-        var canvas = document.getElementById('myCanvas');
-        var context = canvas.getContext('2d');
-        var tagline = ["A man. A plan. Panama.", "A man of measure.", "Bobody. Biznus.", "Hands like a gazelle.", "The golden goose.", "The oracle of time.", "The Great Purveyor.",
-            "Buffalo buffalo buffalo buffalo. Buffalo.", "Thinly lather before basking in the sun", "Wash. Rinse. Repeat.", "The milk man.", "7 / 10 would recommend to a friend. 8 of 9 found this review helpful"
+        var tagline = [
+            "A man. A plan. Panama.",
+            "A man of measure.",
+            "gave a man a fish.",
+            "Hands like a gazelle.",
+            "The golden goose.",
+            "The oracle of time.",
+            "The Great Purveyor.",
+            "Buffalo buffalo buffalo buffalo. Buffalo.",
+            "doesn't know why he makes guacamole is such great quantities",
+            "Thinly lather before basking in the sun",
+            "Wash. Rinse. Repeat.",
+            "The milk man.",
+            "7 / 10 would recommend to a friend. 8 of 9 found this review helpful",
         ];
 
         function createStar() {
@@ -191,24 +204,14 @@
             new createStar(), new createStar(), new createStar(), new createStar()
         ];
 
-        var rocketImg = new Image();
-        rocketImg.src = 'res/rocket_left.png'
-
         var rocket = {
             x: canvas.width,
-            y: canvas.height,
+            y: canvas.height * 3 / 4,
             width: 200,
             height: 201,
             move: function() {
                 rocket.x -= Math.random() * 3 - 1;
                 rocket.y -= Math.random() * 3 - 1;
-                if (!waiting) {
-                    waiting = true;
-                    setTimeout(function() {
-                        rocketImg.src = (rocketImg.src.indexOf('res/rocket_right.png') >= 0) ? 'res/rocket_left.png' : 'res/rocket_right.png';
-                        waiting = false;
-                    }, 75);
-                }
                 if (rocket.x + rocket.width < 0 || rocket.y + rocket.height < 0) {
                     rocket.x = Math.random() * canvas.width;
                     rocket.y = canvas.height;
@@ -219,16 +222,24 @@
             }
         }
 
-        var waiting = false;
+        var index = 0;
 
-        setTimeout(function() {
-            var startTime = (new Date()).getTime();
-            animate(star, canvas, context, startTime);
-        }, 1000);
+        function animateTagLine() {
+            $("h2").animate({
+                opacity: 0
+            }, 1000, function() {
+                $(this).text(tagline[index % tagline.length])
+                    .animate({
+                        opacity: 1
+                    }, 1000);
+                index++;
+            });
+        }
 
-        setTimeout(function() {
-            changeSubtext = true;
-        }, 2500);
+        animateTagLine();
+        setInterval(animateTagLine, 5000);
+
+        init();
     </script>
 </body>
 
