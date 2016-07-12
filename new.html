@@ -26,6 +26,7 @@
             margin-top: 34vh;
             margin-bottom: 0;
             text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
+            text-transform: uppercase;
         }
 
         h2 {
@@ -59,6 +60,7 @@
         }
 
         nav> a {
+            background-color: #34495e;
             color: white;
             text-decoration: none;
             padding-top: 0.1em;
@@ -68,8 +70,6 @@
         }
 
         nav> a:hover {
-            background-color: #34495e;
-            color: white;
             text-decoration: none;
         }
 
@@ -96,12 +96,14 @@
         @media screen and (max-width: 525px) {
             h1 {
                 font-size: 4.5em;
+                margin-top: 28vh;
             }
         }
 
         @media screen and (max-width: 350px) {
             h1 {
                 font-size: 3.5em;
+                margin-top: 28vh;
             }
         }
     </style>
@@ -109,7 +111,7 @@
 
 <body onresize="init()">
     <section>
-        <h1>ANDREW MELLO</h1>
+        <h1>Andrew Mello</h1>
         <!-- Center vertically (??), Looks weird in mobile landscape-->
         <h2>... ... ... </h2>
         <canvas id="myCanvas"></canvas>
