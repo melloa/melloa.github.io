@@ -128,12 +128,17 @@
     <script>
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
+        $(document).ready(function() {
+            init();
+            animate(star, canvas, context);
+            animateTagLine();
+            setInterval(animateTagLine, 5000);
+        })
 
         function init() {
             canvas = document.getElementById("myCanvas");
             canvas.width = document.body.clientWidth;
             canvas.height = document.body.clientHeight * 1.2;
-            animate(star, canvas, context);
         }
 
         window.requestAnimFrame = (function(callback) {
@@ -235,11 +240,6 @@
                 index++;
             });
         }
-
-        animateTagLine();
-        setInterval(animateTagLine, 5000);
-
-        init();
     </script>
 </body>
 
