@@ -47,7 +47,6 @@
         }
 
         div {
-            /*, #16a085 75%, #16a085 76%, #2ecc71 76%, #8cc732*/
             background: linear-gradient(transparent, #2c3e50 25%, rgb(154, 204, 245) 75%);
             height: 100%;
             color: white;
@@ -80,10 +79,6 @@
         article {
             background: rgb(154, 204, 245);
             height: 100%;
-        }
-
-        .planet {
-            margin-top: 66%;
         }
 
         @media screen and (max-width: 950px) {
@@ -125,13 +120,16 @@
             animation-duration: 20s;
             animation-iteration-count: infinite;
         }
+
+        svg:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
 <body onresize="init()">
     <section>
         <h1>Andrew Mello</h1>
-        <!-- Center vertically (??), Looks weird in mobile landscape-->
         <h2>... ... ... </h2>
         <canvas id="myCanvas"></canvas>
     </section>
@@ -146,15 +144,10 @@
     </div>
     <article>
         <!-- SVG Clouds - created by Andrew Mello -->
-        <svg width="300" height="170">
-            <rect y="70" width="300" height="100" rx="50" ry="50" style="fill:white"></rect>
-            <circle cx="200" cy="70" r="70" fill="white"></circle>
-            <circle cx="110" cy="80" r="50" stroke="white" stroke-width="3" fill="white"></circle>
-        </svg>
-        <svg width="300" height="170">
-            <rect y="70" width="300" height="100" rx="50" ry="50" style="fill:white"></rect>
-            <circle cx="200" cy="70" r="70" fill="white"></circle>
-            <circle cx="110" cy="80" r="50" stroke="white" stroke-width="3" fill="white"></circle>
+        <svg width="300" height="180">
+            <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+            <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+            <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
         </svg>
     </article>
     <script>
