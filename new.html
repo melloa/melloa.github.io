@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
     <style>
         html {
             height: 100%;
-            overflow-x: hidden;
         }
 
         body {
@@ -19,13 +19,13 @@
             font-family: "Open sans";
             height: 100%;
             margin: 0;
+            overflow: hidden;
         }
 
         h1 {
             color: white;
             font-size: 5.75em;
-            margin-top: 34vh;
-            margin-bottom: 0;
+            margin: 0;
             text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
             text-transform: uppercase;
         }
@@ -33,34 +33,38 @@
         h2 {
             font-weight: 200;
             color: white;
+            margin: 0;
         }
 
         canvas {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
         }
 
-        section {
+        main {
             margin-left: 7%;
-            height: 66%;
+            line-height: 5.25em;
+            height: 10.5em;
         }
 
-        div {
-            background: linear-gradient(transparent, #2c3e50 25%, rgb(154, 204, 245) 75%);
-            height: 100%;
-            color: white;
+        main> div {
+            position: fixed;
+            top: 50%;
+            margin-top: -5em;
         }
 
         nav {
-            padding-top: 500px;
+            position: fixed;
+            top: 50%;
+            right: 3em;
+            margin-top: -168px;
             font-size: 1.5em;
             text-align: center;
         }
 
         nav> a {
-            background-color: #34495e;
             color: white;
             text-decoration: none;
             padding-top: 0.1em;
@@ -83,9 +87,10 @@
         }
 
         @media screen and (max-width: 950px) {
-            section {
+            main {
                 margin: auto;
                 text-align: center;
+                width: 100%;
             }
         }
 
@@ -124,26 +129,52 @@
         svg:hover {
             animation-play-state: paused;
         }
+
+        spain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: darkblue;
+            opacity: 0.0;
+            z-index: 99;
+        }
+
+        spain> span {
+            color: white;
+            font-size: 16vw;
+            font-weight: 600;
+            padding: 2px;
+        }
+
+        i {
+            color: white;
+        }
     </style>
 </head>
 
 <body onresize="init()">
-    <section>
-        <h1>Andrew Mello</h1>
-        <h2>... ... ... </h2>
-        <canvas id="myCanvas"></canvas>
-    </section>
-    <div>
+    <canvas id="myCanvas"></canvas>
+    <main>
+        <div>
+            <h1>Andrew Mello</h1>
+            <h2>... ... ... </h2>
+        </div>
         <nav>
-            <span>scroll to:</span>
-            <a href="#">about</a>
-            <a href="#">projects</a>
-            <a href="#">resumé</a>
-            <a href="#">contact</a>
+
+            <i class="fa fa-user fa-2x"></i>
+            <br>
+            <i class="fa fa-rocket fa-2x" aria-hidden="true"></i>
+            <br>
+            <i class="fa fa-file-text fa-2x"></i>
+            <br>
+            <i class="fa fa-pencil fa-2x"></i>
         </nav>
-    </div>
+    </main>
+    <!--
     <article>
-        <!-- SVG Clouds - created by Andrew Mello -->
+       SVG Clouds - created by Andrew Mello
         <svg width="35vw" height="21vw" style="max-width:420px;max-height:252px;animation-duration:20s;">
             <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
             <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
@@ -161,7 +192,8 @@
             <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
             <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
         </svg>
-    </article>
+    </article>-->
+
     <script>
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
@@ -175,7 +207,7 @@
         function init() {
             canvas = document.getElementById("myCanvas");
             canvas.width = document.body.clientWidth;
-            canvas.height = document.body.clientHeight * 1.2;
+            canvas.height = document.body.clientHeight;
         }
 
         window.requestAnimFrame = (function(callback) {
@@ -205,6 +237,9 @@
         }
 
         function animate(star, canvas, context) {
+            if (star.length <= 10) {
+                star.push(new createStar());
+            }
             // clear
             context.fillStyle = '#000000';
             context.fillRect(0, 0, canvas.width, canvas.height);
@@ -239,12 +274,10 @@
         function createStar() {
             this.x = (Math.random() * 2 * canvas.width) - canvas.width,
                 this.y = -1 * 100 * Math.random(),
-                this.r = 6 * Math.random()
+                this.r = 6 * Math.random() + 1
         };
 
-        var star = [new createStar(), new createStar(), new createStar(), new createStar(),
-            new createStar(), new createStar(), new createStar(), new createStar()
-        ];
+        var star = [];
 
         var rocket = {
             x: canvas.width,
