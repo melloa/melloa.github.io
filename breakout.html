@@ -46,6 +46,14 @@
             '#00ff00', '#00ff00', '#00ff00'
         ];
 
+        var ball = {
+            x: canvas.width / 4,
+            y: canvas.height * 3 / 4,
+            r: 6,
+            dx: 5,
+            dy: 5
+        }
+
         $(document).ready(function() {
             resizeCanvas();
             init();
@@ -96,6 +104,7 @@
             // draw elements
             drawBricks();
             drawPaddle();
+            drawBall();
 
             // request new frame
             requestAnimFrame(function() {
@@ -112,17 +121,20 @@
         };
 
         function drawBall() {
-            var speed = ball.speed;
             // pixels / second
-            if (ball.x < canvas.width && ball.y < canvas.height) {
-                ball.x += speed;
-                ball.y += speed * 0.6;
-            } else {
-                var height = canvas.height / 2;
-                ball.x = (Math.random() * 2 * canvas.width) - canvas.width;
-                ball.y = -1 * height * Math.random() + (height / 2);
-                ball.r = 6 * Math.random()
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            if (ball.x >= canvas.width || ball.x < 0) {
+                ball.dx *= -1;
+                ball.x += 2 * ball.dx;
             }
+
+            if (ball.y >= canvas.height || ball.y < 0) {
+                ball.dy *= -1;
+                ball.y += 2 * ball.dy;
+            }
+
             context.beginPath();
             context.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI, false);
             context.fillStyle = '#ffffff';
