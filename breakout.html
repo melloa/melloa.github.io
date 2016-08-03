@@ -35,122 +35,114 @@
     <canvas id="myCanvas"></canvas>
 
     <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var bricks = [];
+        var bw = (canvas.width / 13) - 5;
+        var bh = bw / 3.2;
         var mouseX = 0;
+        var colors = [
+            '#0000ff', '#ff6600', '#ff6600', '#ff6600', '#ff6600',
+            '#00ff00', '#00ff00', '#00ff00'
+        ];
+
         $(document).ready(function() {
-            var canvas = document.getElementById('myCanvas');
-            var context = canvas.getContext('2d');
-            var bricks = [];
-            var bw = (canvas.width / 13) - 5;
-            var bh = bw / 3.2;
-            var colors = [
-                '#0000ff', '#ff6600', '#ff6600', '#ff6600', '#ff6600',
-                '#00ff00', '#00ff00', '#00ff00'
-            ];
-
-            function init() {
-                bw = (canvas.width - 5) / 13 - 5;
-                bh = bw / 3.2;
-                mouseX = canvas.width / 2;
-                var totalBricks = 104,
-                    bricksPerRow = 13,
-                    spacing = 5;
-
-                bricks = [];
-                for (var i = 0; i < totalBricks; i++) {
-                    var c = i % bricksPerRow;
-                    var r = Math.floor(i / bricksPerRow);
-                    bricks.push(new createBrick(c * bw + (c + 1) * spacing,
-                        r * bh + (r + 1) * spacing, colors[r]));
-                }
-                console.log("There are " + bricks.length + " bricks!")
-            }
-
-            function resizeCanvas() {
-                canvas = document.getElementById("myCanvas");
-                canvas.width = document.body.clientWidth;
-                canvas.height = document.body.clientHeight;
-            }
-
-            window.requestAnimFrame = (function(callback) {
-                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-                    function(callback) {
-                        window.setTimeout(callback, 1000 / 60);
-                    };
-            })();
-
-            function drawStar(star, context) {
-                var speed = 3 * star.r;
-                // pixels / second
-                if (star.x < canvas.width && star.y < canvas.height) {
-                    star.x += speed;
-                    star.y += speed * 0.6;
-                } else {
-                    var height = canvas.height / 2;
-                    star.x = (Math.random() * 2 * canvas.width) - canvas.width;
-                    star.y = -1 * height * Math.random() + (height / 2);
-                    star.r = 6 * Math.random()
-                }
-                context.beginPath();
-                context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
-                context.fillStyle = '#ffffff';
-                context.fill();
-                context.lineWidth = star.borderWidth;
-            }
-
-            function paint() {
-                // clear
-                context.fillStyle = '#000000';
-                context.fillRect(0, 0, canvas.width, canvas.height);
-
-                // draw elements
-                drawBricks();
-                drawPaddle();
-
-                // request new frame
-                requestAnimFrame(function() {
-                    paint();
-                });
-            }
-
-            function createBrick(startX, startY, c) {
-                console.log("Calling createBrick with " + startX + " and " + startY)
-                this.x = startX,
-                    this.y = startY,
-                    this.color = c,
-                    this.visible = true;
-            };
-
-            function drawBricks() {
-                for (var i = 0; i < bricks.length; i++) {
-                    var b = bricks[i];
-                    context.fillStyle = b.color;
-                    context.fillRect(b.x, b.y, bw, bh);
-                    context.fill();
-                }
-            }
-
-            function drawPaddle() {
-                context.fillStyle = '#fff';
-                context.fillRect(mouseX, canvas.height - 40, bw, bh / 1.5);
-                context.fill();
-            }
-
-            $('#myCanvas').mousemove(function (event) {
-              mouseX = event.clientX - canvas.getBoundingClientRect().left;
-              console.log(mouseX)
-            });
-
             resizeCanvas();
             init();
             paint();
 
+            window.addEventListener('mousemove', function(event) {
+                mouseX = event.pageX - (bw / 2);
+            }, false);
+
         });
 
+        function init() {
+            bw = (canvas.width - 5) / 13 - 5;
+            bh = bw / 3.2;
+            mouseX = canvas.width / 2;
+            var totalBricks = 104,
+                bricksPerRow = 13,
+                spacing = 5;
 
-        document.getElementById("myCanvas").addEventListener('mousemove', function(event) {
-            mouseX = event.clientX - document.getElementById("myCanvas").getBoundingClientRect().left;
-            console.log(mouseX)
-        }, false);
+            bricks = [];
+            for (var i = 0; i < totalBricks; i++) {
+                var c = i % bricksPerRow;
+                var r = Math.floor(i / bricksPerRow);
+                bricks.push(new createBrick(c * bw + (c + 1) * spacing,
+                    r * bh + (r + 1) * spacing, colors[r]));
+            }
+            console.log("There are " + bricks.length + " bricks!")
+        }
+
+        function resizeCanvas() {
+            canvas = document.getElementById("myCanvas");
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
+        }
+
+        window.requestAnimFrame = (function(callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function paint() {
+            // clear
+            context.fillStyle = '#000000';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // draw elements
+            drawBricks();
+            drawPaddle();
+
+            // request new frame
+            requestAnimFrame(function() {
+                paint();
+            });
+        }
+
+        function createBrick(startX, startY, c) {
+            console.log("Calling createBrick with " + startX + " and " + startY)
+            this.x = startX,
+                this.y = startY,
+                this.color = c,
+                this.visible = true;
+        };
+
+        function drawBall() {
+            var speed = ball.speed;
+            // pixels / second
+            if (ball.x < canvas.width && ball.y < canvas.height) {
+                ball.x += speed;
+                ball.y += speed * 0.6;
+            } else {
+                var height = canvas.height / 2;
+                ball.x = (Math.random() * 2 * canvas.width) - canvas.width;
+                ball.y = -1 * height * Math.random() + (height / 2);
+                ball.r = 6 * Math.random()
+            }
+            context.beginPath();
+            context.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI, false);
+            context.fillStyle = '#ffffff';
+            context.fill();
+        }
+
+        function drawBricks() {
+            for (var i = 0; i < bricks.length; i++) {
+                var b = bricks[i];
+                context.fillStyle = b.color;
+                context.fillRect(b.x, b.y, bw, bh);
+                context.fill();
+            }
+        }
+
+        function drawPaddle() {
+            context.fillStyle = '#fff';
+            context.fillRect(mouseX, canvas.height - 40, bw, bh / 1.5);
+            context.fill();
+        }
     </script>
 </body>
 
