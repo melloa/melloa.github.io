@@ -14,6 +14,7 @@
 
         body {
             background-color: #000;
+            cursor: none;
             font-size: 16px;
             font-family: "Open sans";
             height: 100%;
@@ -21,134 +22,11 @@
             overflow: hidden;
         }
 
-        h1 {
-            color: white;
-            font-size: 5.75em;
-            margin: 0;
-            text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-weight: 200;
-            color: white;
-            margin: 0;
-        }
-
         canvas {
             position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
-        }
-
-        main {
-            margin-left: 7%;
-            line-height: 5.25em;
-            height: 10.5em;
-        }
-
-        main> div {
-            position: fixed;
-            top: 50%;
-            margin-top: -5em;
-        }
-
-        nav {
-            position: fixed;
-            top: 50%;
-            right: 3em;
-            margin-top: -168px;
-            font-size: 1.5em;
-            text-align: center;
-        }
-
-        nav> a {
-            color: white;
-            text-decoration: none;
-            padding-top: 0.1em;
-            padding-left: 0.5em;
-            padding-right: 0.5em;
-            padding-bottom: 0.2em;
-        }
-
-        nav> a:hover {
-            text-decoration: none;
-        }
-
-        nav> span {
-            font-weight: 200;
-        }
-
-        article {
-            background: rgb(154, 204, 245);
-            height: 100%;
-        }
-
-        @media screen and (max-width: 950px) {
-            main {
-                margin: auto;
-                text-align: center;
-                width: 100%;
-            }
-        }
-
-        @media screen and (max-width: 525px) {
-            h1 {
-                font-size: 4.5em;
-                margin-top: 28vh;
-            }
-        }
-
-        @media screen and (max-width: 350px) {
-            h1 {
-                font-size: 3.5em;
-                margin-top: 28vh;
-            }
-        }
-
-        @keyframes clouds {
-            from {
-                transform: translateX(-120%);
-                ;
-            }
-            to {
-                transform: translateX(102vw);
-                ;
-            }
-        }
-
-        svg {
-            animation-name: clouds;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            margin-bottom: 8em;
-        }
-
-        svg:hover {
-            animation-play-state: paused;
-        }
-
-        spain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: darkblue;
-            opacity: 0.0;
-            z-index: 99;
-        }
-
-        spain> span {
-            color: white;
-            font-size: 16vw;
-            font-weight: 600;
-            padding: 2px;
-        }
-
-        i {
-            color: white;
         }
     </style>
 </head>
