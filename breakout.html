@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            font-size: 16px;
+            font-family: "Open sans";
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: white;
+            font-size: 5.75em;
+            margin: 0;
+            text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-weight: 200;
+            color: white;
+            margin: 0;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        main {
+            margin-left: 7%;
+            line-height: 5.25em;
+            height: 10.5em;
+        }
+
+        main> div {
+            position: fixed;
+            top: 50%;
+            margin-top: -5em;
+        }
+
+        nav {
+            position: fixed;
+            top: 50%;
+            right: 3em;
+            margin-top: -168px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        nav> a {
+            color: white;
+            text-decoration: none;
+            padding-top: 0.1em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            padding-bottom: 0.2em;
+        }
+
+        nav> a:hover {
+            text-decoration: none;
+        }
+
+        nav> span {
+            font-weight: 200;
+        }
+
+        article {
+            background: rgb(154, 204, 245);
+            height: 100%;
+        }
+
+        @media screen and (max-width: 950px) {
+            main {
+                margin: auto;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 525px) {
+            h1 {
+                font-size: 4.5em;
+                margin-top: 28vh;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            h1 {
+                font-size: 3.5em;
+                margin-top: 28vh;
+            }
+        }
+
+        @keyframes clouds {
+            from {
+                transform: translateX(-120%);
+                ;
+            }
+            to {
+                transform: translateX(102vw);
+                ;
+            }
+        }
+
+        svg {
+            animation-name: clouds;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            margin-bottom: 8em;
+        }
+
+        svg:hover {
+            animation-play-state: paused;
+        }
+
+        spain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: darkblue;
+            opacity: 0.0;
+            z-index: 99;
+        }
+
+        spain> span {
+            color: white;
+            font-size: 16vw;
+            font-weight: 600;
+            padding: 2px;
+        }
+
+        i {
+            color: white;
+        }
+    </style>
+</head>
+
+<body onresize="resizeCanvas()">
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        var mouseX = 0;
+        $(document).ready(function() {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            var bricks = [];
+            var bw = (canvas.width / 13) - 5;
+            var bh = bw / 3.2;
+            var colors = [
+                '#0000ff', '#ff6600', '#ff6600', '#ff6600', '#ff6600',
+                '#00ff00', '#00ff00', '#00ff00'
+            ];
+
+            function init() {
+                bw = (canvas.width - 5) / 13 - 5;
+                bh = bw / 3.2;
+                mouseX = canvas.width / 2;
+                var totalBricks = 104,
+                    bricksPerRow = 13,
+                    spacing = 5;
+
+                bricks = [];
+                for (var i = 0; i < totalBricks; i++) {
+                    var c = i % bricksPerRow;
+                    var r = Math.floor(i / bricksPerRow);
+                    bricks.push(new createBrick(c * bw + (c + 1) * spacing,
+                        r * bh + (r + 1) * spacing, colors[r]));
+                }
+                console.log("There are " + bricks.length + " bricks!")
+            }
+
+            function resizeCanvas() {
+                canvas = document.getElementById("myCanvas");
+                canvas.width = document.body.clientWidth;
+                canvas.height = document.body.clientHeight;
+            }
+
+            window.requestAnimFrame = (function(callback) {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                    function(callback) {
+                        window.setTimeout(callback, 1000 / 60);
+                    };
+            })();
+
+            function drawStar(star, context) {
+                var speed = 3 * star.r;
+                // pixels / second
+                if (star.x < canvas.width && star.y < canvas.height) {
+                    star.x += speed;
+                    star.y += speed * 0.6;
+                } else {
+                    var height = canvas.height / 2;
+                    star.x = (Math.random() * 2 * canvas.width) - canvas.width;
+                    star.y = -1 * height * Math.random() + (height / 2);
+                    star.r = 6 * Math.random()
+                }
+                context.beginPath();
+                context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = star.borderWidth;
+            }
+
+            function paint() {
+                // clear
+                context.fillStyle = '#000000';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                // draw elements
+                drawBricks();
+                drawPaddle();
+
+                // request new frame
+                requestAnimFrame(function() {
+                    paint();
+                });
+            }
+
+            function createBrick(startX, startY, c) {
+                console.log("Calling createBrick with " + startX + " and " + startY)
+                this.x = startX,
+                    this.y = startY,
+                    this.color = c,
+                    this.visible = true;
+            };
+
+            function drawBricks() {
+                for (var i = 0; i < bricks.length; i++) {
+                    var b = bricks[i];
+                    context.fillStyle = b.color;
+                    context.fillRect(b.x, b.y, bw, bh);
+                    context.fill();
+                }
+            }
+
+            function drawPaddle() {
+                context.fillStyle = '#fff';
+                context.fillRect(mouseX, canvas.height - 40, bw, bh / 1.5);
+                context.fill();
+            }
+
+            $('#myCanvas').mousemove(function (event) {
+              mouseX = event.clientX - canvas.getBoundingClientRect().left;
+              console.log(mouseX)
+            });
+
+            resizeCanvas();
+            init();
+            paint();
+
+        });
+
+
+        document.getElementById("myCanvas").addEventListener('mousemove', function(event) {
+            mouseX = event.clientX - document.getElementById("myCanvas").getBoundingClientRect().left;
+            console.log(mouseX)
+        }, false);
+    </script>
+</body>
+
+</html>
