@@ -48,7 +48,7 @@
 
         var ball = {
             x: canvas.width / 4,
-            y: canvas.height * 3 / 4,
+            y: (canvas.height * 3) / 4,
             r: 6,
             dx: 5,
             dy: 5
@@ -121,19 +121,12 @@
         };
 
         function drawBall() {
-            // pixels / second
+            checkBallOnScreen();
+            checkCollisionWithBricks();
+            checkCollisionWithPaddle();
+
             ball.x += ball.dx;
             ball.y += ball.dy;
-
-            if (ball.x >= canvas.width || ball.x < 0) {
-                ball.dx *= -1;
-                ball.x += 2 * ball.dx;
-            }
-
-            if (ball.y >= canvas.height || ball.y < 0) {
-                ball.dy *= -1;
-                ball.y += 2 * ball.dy;
-            }
 
             context.beginPath();
             context.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI, false);
@@ -141,12 +134,56 @@
             context.fill();
         }
 
+        function checkBallOnScreen() {
+            if (ball.x + ball.r >= canvas.width || ball.x + ball.r < 0) {
+                ball.dx *= -1;
+            }
+
+            if (ball.y + ball.r >= canvas.height || ball.y + ball.r < 0) {
+                ball.dy *= -1;
+            }
+        }
+
+        function checkCollisionWithBricks() {
+            for (var i = 0; i < bricks.length; i++) {
+                var brick = bricks[i];
+                if (ball.x + ball.r >= brick.x && ball.x - ball.r <= brick.x + bw && ball.y + ball.r >= brick.y && ball.y - ball.r <= brick.y + bh) {
+                    bricks.splice(i, 1)
+
+                    var r = ball.r / 2;
+                    if (ball.x + r >= brick.x && ball.x - r <= brick.x + bw) {
+                        ball.dx *= -1;
+                    }
+                    if (ball.y + r >= brick.y && ball.y - r <= brick.y + bh) {
+                        ball.dy *= -1;
+                    }
+
+                    if (bricks.length == 0) {
+                        gameOver(true);
+                    }
+                }
+            }
+        }
+
+        function checkCollisionWithPaddle() {
+            if (ball.x + ball.r >= mouseX && ball.x - ball.r <= mouseX + bw &&
+                ball.y + ball.r >= canvas.height - 40 && ball.y - ball.r <  canvas.height - 40 + bh) {
+                var pos = -2 * (mouseX - ball.x + (bw / 2)) / bw;
+                console.log(pos);
+                ball.dx = pos * 10;
+                ball.dy *= -1;
+            }
+
+        }
+
         function drawBricks() {
             for (var i = 0; i < bricks.length; i++) {
                 var b = bricks[i];
-                context.fillStyle = b.color;
-                context.fillRect(b.x, b.y, bw, bh);
-                context.fill();
+                if (b.visible) {
+                    context.fillStyle = b.color;
+                    context.fillRect(b.x, b.y, bw, bh);
+                    context.fill();
+                }
             }
         }
 
@@ -154,6 +191,11 @@
             context.fillStyle = '#fff';
             context.fillRect(mouseX, canvas.height - 40, bw, bh / 1.5);
             context.fill();
+        }
+
+        function gameOver(result) {
+            var r = result ? "Winner!" : "You lose."
+            console.log(r);
         }
     </script>
 </body>
