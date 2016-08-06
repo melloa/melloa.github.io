@@ -130,19 +130,18 @@
             animation-play-state: paused;
         }
 
-        .overlay {
+        spain {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-color: darkblue;
-            opacity: 1.0;
-            display:none;
+            opacity: 0.0;
             z-index: 99;
         }
 
-        .overlay> span {
+        spain> span {
             color: white;
             font-size: 16vw;
             font-weight: 600;
@@ -163,6 +162,7 @@
             <h2>... ... ... </h2>
         </div>
         <nav>
+
             <i class="fa fa-user fa-2x"></i>
             <br>
             <i class="fa fa-rocket fa-2x" aria-hidden="true"></i>
@@ -172,18 +172,6 @@
             <i class="fa fa-pencil fa-2x"></i>
         </nav>
     </main>
-    <div class="overlay">
-        <span>bye</span>
-    </div>
-    <script>
-        $("i").mouseover(function() {
-            $(".overlay").show();
-            console.log("meow");
-        });
-        $("i").mouseleave(function() {
-            //$(".overlay").hide();
-        });
-    </script>
     <!--
     <article>
        SVG Clouds - created by Andrew Mello
