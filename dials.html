@@ -1,51 +1,59 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="res/progressr.css">
-	<link rel="stylesheet" href="res/slider-custom.css">
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="res/progressr.js"></script>
-  </head>
-  <body>
+
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="res/progressr.css">
+    <link rel="stylesheet" href="res/slider-custom.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="res/progressr.js"></script>
+</head>
+
+<body>
     <div class="overlay"></div>
-	<div class="popup">
-		<h4 class="adding-popup">Add New Dial</h4>
-		<h4 class="modifying-popup">Update Dial</h4>
-		<hr><br>
-		Enter Dial Label: <input id="dial-title" type="text" ></input>
-		<br><br><br>
-		Select the current percentage completed:
-		<input type="text" id="percentComplete" class="inputSlider" readonly></input>
-		<div id="percentage-slider" class="slider"></div>
-		<!--<input type="range"></input>-->
-		<br><br>
-		Select the current time spent:
-		<input type="text" id="timeSpent" class="inputSlider" readonly></input>
-		<div id="time-slider" class="slider"></div>
-		<br>
-		<button id="delete-dial" class="delete-btn modifying-popup" >DELETE</button>
-		<button class="control-btn">CANCEL</button>
-		<button id="create-dial" class="control-btn">CREATE</button>
-		<button id="update-dial" class="control-btn modifying-popup">UPDATE</button>
-	</div>
-	<nav class="nav" role="navigation">
-		<ul>
-		  <li style="margin-left: 6%;"><a id="add-dial-btn" class="widgets" href="#">+</a></li>
-		  <li><img src="res/dialsLogo.png"></img></li>
-		  <ul style="float:right;margin-right:6%;list-style-type:none;">
-			<li><a class="widgets" href="#">
-				<b class="glyphicon glyphicon-cog"></b>
-			</a></li>
-		  </ul>
-		</ul>
-	</nav>
+    <div class="popup">
+        <h4 class="adding-popup">Add New Dial</h4>
+        <h4 class="modifying-popup">Update Dial</h4>
+        <hr>
+        <br> Enter Dial Label:
+        <input id="dial-title" type="text"></input>
+        <br>
+        <br>
+        <br> Select the current percentage completed:
+        <input type="text" id="percentComplete" class="inputSlider" readonly></input>
+        <div id="percentage-slider" class="slider"></div>
+        <!--<input type="range"></input>-->
+        <br>
+        <br> Select the current time spent:
+        <input type="text" id="timeSpent" class="inputSlider" readonly></input>
+        <div id="time-slider" class="slider"></div>
+        <br>
+        <button id="delete-dial" class="delete-btn modifying-popup">DELETE</button>
+        <button class="control-btn">CANCEL</button>
+        <button id="create-dial" class="control-btn">CREATE</button>
+        <button id="update-dial" class="control-btn modifying-popup">UPDATE</button>
+    </div>
+    <nav class="nav" role="navigation">
+        <ul>
+            <li style="margin-left: 6%;"><a id="add-dial-btn" class="widgets" href="#">+</a></li>
+            <li><img src="res/dialsLogo.png"></img>
+            </li>
+            <ul style="float:right;margin-right:6%;list-style-type:none;">
+                <li>
+                    <a class="widgets" href="#">
+                        <b class="glyphicon glyphicon-cog"></b>
+                    </a>
+                </li>
+            </ul>
+        </ul>
+    </nav>
     <canvas id="myCanvas" width="1280px" height="90px"></canvas>
-	<div id="footer">
-		<h1 id="estimatedTime">Est. time remaining: 
-		<input type="text" id="hourRemaining" class="remaining" placeholder="--" readonly></input> hr 
+    <div id="footer">
+        <h1 id="estimatedTime">Est. time remaining:
+		<input type="text" id="hourRemaining" class="remaining" placeholder="--" readonly></input> hr
 		<input type="text" id="minutesRemaining" class="remaining" placeholder="--" readonly></input> min</h1>
-	</div>
-  </body>
-</html>      
+    </div>
+</body>
+
+</html>
