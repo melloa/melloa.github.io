@@ -108,47 +108,6 @@
             }
         }
 
-        @keyframes clouds {
-            from {
-                transform: translateX(-120%);
-                ;
-            }
-            to {
-                transform: translateX(102vw);
-                ;
-            }
-        }
-
-        svg {
-            animation-name: clouds;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            margin-bottom: 8em;
-        }
-
-        svg:hover {
-            animation-play-state: paused;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: darkblue;
-            opacity: 1.0;
-            display:none;
-            z-index: 99;
-        }
-
-        .overlay> span {
-            color: white;
-            font-size: 16vw;
-            font-weight: 600;
-            padding: 2px;
-        }
-
         i {
             color: white;
         }
@@ -172,39 +131,6 @@
             <i class="fa fa-pencil fa-2x"></i>
         </nav>
     </main>
-    <div class="overlay">
-        <span>bye</span>
-    </div>
-    <script>
-        $("i").mouseover(function() {
-            $(".overlay").show();
-            console.log("meow");
-        });
-        $("i").mouseleave(function() {
-            //$(".overlay").hide();
-        });
-    </script>
-    <!--
-    <article>
-       SVG Clouds - created by Andrew Mello
-        <svg width="35vw" height="21vw" style="max-width:420px;max-height:252px;animation-duration:20s;">
-            <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
-            <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
-            <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
-        </svg>
-        <br>
-        <svg width="11vw" height="7vw" style="max-width:150px;max-height:90px;animation-duration:50s;">
-            <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
-            <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
-            <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
-        </svg>
-        <br>
-        <svg width="33vw" height="20vw" style="max-width:330px;max-height:198px;animation-duration:35s;">
-            <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
-            <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
-            <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
-        </svg>
-    </article>-->
 
     <script>
         var canvas = document.getElementById('myCanvas');
