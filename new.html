@@ -110,6 +110,11 @@
 
         i {
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        i:hover {
+            color: #bdc3c7;
         }
     </style>
 </head>
@@ -124,7 +129,7 @@
         <nav>
             <i class="fa fa-user fa-2x"></i>
             <br>
-            <i class="fa fa-rocket fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-rocket fa-2x"></i>
             <br>
             <i class="fa fa-file-text fa-2x"></i>
             <br>
@@ -135,11 +140,31 @@
     <script>
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
+        var link = "";
+
         $(document).ready(function() {
             init();
             animate(star, canvas, context);
             animateTagLine();
             setInterval(animateTagLine, 5000);
+
+            $('i').mouseover(function() {
+                if ($(this).hasClass('fa-user')) {
+                    link = "about";
+                }
+                if ($(this).hasClass('fa-rocket')) {
+                    link = "projects";
+                }
+                if ($(this).hasClass('fa-file-text')) {
+                    link = "resum‎é";
+                }
+                if ($(this).hasClass('fa-pencil')) {
+                    link = "contact";
+                }
+            });
+            $('i').mouseleave(function() {
+                link = "";
+            });
         })
 
         function init() {
@@ -167,11 +192,18 @@
                 star.y = -1 * height * Math.random() + (height / 2);
                 star.r = 6 * Math.random()
             }
-            context.beginPath();
-            context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
-            context.fillStyle = '#ffffff';
-            context.fill();
-            context.lineWidth = star.borderWidth;
+            if (link.length == 0) {
+                context.beginPath();
+                context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = star.borderWidth;
+            } else {
+                var fontsize = 14 * star.r + 3;
+                context.font = fontsize + "px Open Sans";
+                context.fillStyle = "white";
+                context.fillText(link, star.x, star.y);
+            }
         }
 
         function animate(star, canvas, context) {
