@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #000;
+            background: linear-gradient(#000 100%, #9ACCF5 200%);
             font-size: 16px;
             font-family: "Open sans";
             height: 100%;
@@ -44,7 +44,6 @@
         }
 
         main {
-            margin-left: 7%;
             line-height: 5.25em;
             height: 10.5em;
         }
@@ -53,6 +52,7 @@
             position: fixed;
             top: 50%;
             margin-top: -5em;
+            margin-left: 7%;
         }
 
         nav {
@@ -82,7 +82,7 @@
         }
 
         article {
-            background: rgb(154, 204, 245);
+            background-color: #9ACCF5;
             height: 100%;
         }
 
@@ -116,56 +116,103 @@
         i:hover {
             color: #bdc3c7;
         }
+
+        @keyframes clouds {
+            from {
+                transform: translateX(-120%);
+                ;
+            }
+            to {
+                transform: translateX(102vw);
+                ;
+            }
+        }
+
+        svg {
+            animation-name: clouds;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            display: none;
+            margin-bottom: 8em;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        @media screen and (max-width: 1050px) {
+            li {
+                float: left;
+                padding: 1.5em;
+                font-size: 1.5em;
+            }
+            nav {
+                font-size: 1.2em;
+                text-align: center;
+                top: 75%;
+                right: calc(50% - 290px);
+                margin: 0;
+            }
+            main> div {
+                top: 45%;
+                margin-top: -5em;
+                margin-left: 0;
+                text-align: center;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body onresize="init()">
     <canvas id="myCanvas"></canvas>
     <main>
-        <div>
+        <div id="title">
             <h1>Andrew Mello</h1>
             <h2>... ... ... </h2>
         </div>
         <nav>
-            <i class="fa fa-user fa-2x"></i>
-            <br>
-            <i class="fa fa-rocket fa-2x"></i>
-            <br>
-            <i class="fa fa-file-text fa-2x"></i>
-            <br>
-            <i class="fa fa-pencil fa-2x"></i>
+            <ul>
+                <li><i class="fa fa-user fa-2x"></i></li>
+                <li><i class="fa fa-rocket fa-2x"></i></li>
+                <li><i class="fa fa-file-text fa-2x"></i></li>
+                <li><i id="contact" class="fa fa-pencil fa-2x"></i></li>
+            </ul>
         </nav>
     </main>
+    <!--SVG Clouds - created by Andrew Mello-->
+    <svg width="35vw" height="21vw" style="max-width:420px;max-height:252px;animation-duration:20s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
+    <br>
+    <svg width="11vw" height="7vw" style="max-width:150px;max-height:90px;animation-duration:50s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
+    <br>
+    <svg width="33vw" height="20vw" style="max-width:330px;max-height:198px;animation-duration:35s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
 
     <script>
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext('2d');
+        var status = "play";
         var link = "";
 
         $(document).ready(function() {
             init();
             animate(star, canvas, context);
             animateTagLine();
+            initializeMouseOver();
+            initializeAnimations();
             setInterval(animateTagLine, 5000);
-
-            $('i').mouseover(function() {
-                if ($(this).hasClass('fa-user')) {
-                    link = "about";
-                }
-                if ($(this).hasClass('fa-rocket')) {
-                    link = "projects";
-                }
-                if ($(this).hasClass('fa-file-text')) {
-                    link = "resum‎é";
-                }
-                if ($(this).hasClass('fa-pencil')) {
-                    link = "contact";
-                }
-            });
-            $('i').mouseleave(function() {
-                link = "";
-            });
-        })
+        });
 
         function init() {
             canvas = document.getElementById("myCanvas");
@@ -180,18 +227,52 @@
                 };
         })();
 
+        function initializeMouseOver() {
+            $('i').mouseover(function() {
+                if ($(this).hasClass('fa-user')) {
+                    link = "about";
+                }
+                if ($(this).hasClass('fa-rocket')) {
+                    link = "projects";
+                }
+                if ($(this).hasClass('fa-file-text')) {
+                    link = "resum‎é";
+                }
+                if ($(this).hasClass('fa-pencil')) {
+                    link = "contact";
+                }
+            });
+
+            $('i').mouseleave(function() {
+                link = "";
+            });
+        }
+
+        function initializeAnimations() {
+            // Contact animation
+            $('#contact').click(function() {
+                $('#title').fadeOut('slow');
+                status = "stop-redraw";
+                $('body').css("background", "#9ACCF5");
+                $('svg').fadeIn('fast');
+                $('#myCanvas').fadeOut('slow');
+            });
+            // -----------------
+        }
+
         function drawStar(star, context) {
             var speed = 3 * star.r;
             // pixels / second
             if (star.x < canvas.width && star.y < canvas.height) {
                 star.x += speed;
                 star.y += speed * 0.6;
-            } else {
+            } else if (status === "play") {
                 var height = canvas.height / 2;
                 star.x = (Math.random() * 2 * canvas.width) - canvas.width;
                 star.y = -1 * height * Math.random() + (height / 2);
                 star.r = 6 * Math.random()
             }
+
             if (link.length == 0) {
                 context.beginPath();
                 context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
@@ -212,7 +293,7 @@
             }
             // clear
             context.fillStyle = '#000000';
-            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
             // update
             for (var i = 0; i < star.length; i++) {
                 drawStar(star[i], context);
