@@ -24,9 +24,11 @@
         }
 
         section> div {
+            position: relative;
             border: solid 1px #ecf0f1;
             cursor: pointer;
             transition: all 0.5s ease;
+            z-index: 99;
         }
 
         section> div:hover {
@@ -107,12 +109,37 @@
         .work> svg {
             float: right;
             height: 75px;
-            margin-top: -22px;
+            margin-top: -1.5em;
             padding-left: 1em;
         }
 
         button {
             text-decoration: none;
+        }
+
+        hr {
+            border: 0;
+            background: linear-gradient(to left, #ecf0f1, #888, #ecf0f1);
+            height: 1px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            text-align: center;
+            width: 80%;
+        }
+
+        hr:after {
+            content: attr(data-title);
+            position: relative;
+            top: -10px;
+            padding: 0 10px;
+            background: #ecf0f1;
+            color: #888;
+            font-size: 0.9em;
+            font-family: Source Sans Pro;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 0;
         }
     }
     </style>
@@ -120,6 +147,9 @@
 
 <body>
     <br>
+
+    <hr data-title="Work Experience">
+
     <section id="work-experience">
         <div class="work">
             <span>Amazon Robotics</span>
@@ -190,6 +220,8 @@
         </div>
 
     </section>
+
+    <hr data-title="Online Courses">
 
     <section id="mooc">
         <div id="powerelec" class="course">
