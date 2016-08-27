@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:900|Source+Serif+Pro:600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
     <style>
         html {
             background-color: #3B5998;
@@ -17,6 +17,94 @@
 
         body {
             color: #FFFFFF;
+            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+        }
+
+        main {
+            max-width: 40em;
+            width: 100%;
+            margin-right: 2%;
+            float: right;
+        }
+
+        section {
+            background-color: white;
+            box-shadow: 0px 0px 10px 0px #333;
+            color: black;
+            margin: 1em;
+            height: 17em;
+            position: relative;
+        }
+
+        section> div.bg-image {
+            background-image: url("http://assets.fodors.com/destinations/1128/skyline-manhattan-new-york-city-new-york-usa_main.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 60%;
+            width: 100%;
+        }
+
+        .card-content {
+            position: absolute;
+            background-color: white;
+            border-top: solid #ccc 1px;
+            cursor: pointer;
+            padding: 1em 2em;
+            overflow: hidden;
+            height: 4em;
+            bottom: 2em;
+            transition: height 0.5s ease-in-out;
+        }
+
+        .card-content:hover {
+            height: 7.5em;
+        }
+
+        .card-footer {
+            position: absolute;
+            height: 2em;
+            bottom: 0;
+            padding: 0 2em;
+        }
+
+        .card-footer> a {
+            font-size: 1em;
+            font-weight: 600;
+            padding-right: 0.5em;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #343D3A;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #555;
+            margin: 0;
+        }
+
+        .card-content> p {
+            color: #666;
+            font-weight: 300;
+        }
+
+        .tag {
+            position: absolute;
+            background-color: purple;
+            color: white;
+            font-size: 0.95em;
+            font-weight: 800;
+            top: -2.25em;
+            left: 0;
+            width: 6em;
+            padding: 0.5em 0;
+            text-align: center;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -33,10 +121,123 @@
         </div>
     </div>
 
+    <main>
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>Dash</h1>
+                <h2>Last mile electric longboard</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>Knightly</h1>
+                <h2>Personal safety device for university students</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Software/Design</div>
+                <h1>Personal website</h1>
+                <h2>Everything you have seen so far, and many revisions of it ...</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>E-Ink Display Adapter</h1>
+                <h2>Interface and driver for common e-ink display</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Systems</div>
+                <h1>Smartwatch</h1>
+                <h2>Low-cost smartwatch</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>Wiimote Controlled Robotic Arm</h1>
+                <h2>&nbsp;</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>Weather Balloon</h1>
+                <h2>Project for AIAA, sent to near space</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="bg-image"></div>
+            <div class="card-content">
+                <div class="tag">Hardware</div>
+                <h1>Project Explorer</h1>
+                <h2>Building an electric guitar</h2>
+                <p>One of my first projects, building an electric guitar. It is made of Sapele wood and designed to be very close to a Gibson Explorer</p>
+            </div>
+            <div class="card-footer">
+                <a href="#">link 1</a>
+                <a href="#">link 2</a>
+            </div>
+        </section>
+    </main>
+
     <style>
         .text {
             position: fixed;
-            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
             font-size: 5.5em;
             font-weight: 900;
             letter-spacing: -2px;
@@ -48,9 +249,11 @@
             font-kerning: normal;
             bottom: 2em;
             left: 1em;
+            z-index: -1;
         }
 
-        p {
+        .row1> p,
+        .row2> p {
             position: relative;
             top: 0;
             left: 0;
