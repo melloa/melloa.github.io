@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:900|Source+Serif+Pro:600" rel="stylesheet">
+    <style>
+        html {
+            background-color: #3B5998;
+            height: 100%;
+        }
+
+        body {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text">
+        <div class="row1">
+            <p>Personal</p>
+            <p>Projects</p>
+        </div>
+        <div class="row2">
+            <p>&nbsp;by</p>
+            <p>Andrew Mello</p>
+        </div>
+    </div>
+
+    <style>
+        .text {
+            position: fixed;
+            font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+            font-size: 5.5em;
+            font-weight: 900;
+            letter-spacing: -2px;
+            list-style-type: none;
+            line-height: .75em;
+            text-transform: uppercase;
+            transform: skew(30deg, -28deg);
+            -webkit-font-smoothing: antialiased;
+            font-kerning: normal;
+            bottom: 2em;
+            left: 1em;
+        }
+
+        p {
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .row1> p:nth-child(even) {
+            transform: skew(34deg, 0deg);
+            /*animation-name: fdirst-row;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;*/
+        }
+
+        .row2> p {
+            transform: skew(34deg, 0deg);
+            /*animation-name: second-row;
+            animation-duration: 3s;
+            animation-timing-function: linear;*/
+        }
+
+        p:nth-child(odd) {
+            color: #eee;
+            transform: skew(-30deg, 0deg);
+        }
+
+        @keyframes first-row {
+            from {
+                transform: skew(-30deg, 0deg) rotateX(180deg) translateY(40px);
+            }
+            to {
+                transform: skew(34deg, 0deg);
+            }
+        }
+
+        @keyframes second-row {
+            0% {
+                top: 0;
+                transform: skew(-30deg, 0deg) rotateX(180deg) translateY(190px);
+            }
+            33% {
+                top: -132px;
+                transform: skew(34deg, 0deg);
+            }
+            66% {
+                top: 0;
+                transform: skew(330deg, 0deg) rotateX(-180deg) translateY(40px);
+            }
+        }
+    </style>
+</body>
+
+</html>
