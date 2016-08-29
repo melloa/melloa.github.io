@@ -10,7 +10,7 @@
     <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400|Source+Serif+Pro:600" rel="stylesheet">
     <style>
-    body {
+        body {
             margin: 0;
             font-family: Source Serif Pro;
             background: #ecf0f1;
@@ -19,7 +19,7 @@
 
         section {
             max-width: 60rem;
-            width: 80%;
+            width: 95%;
             margin: auto;
         }
 
@@ -108,7 +108,7 @@
 
         .work> svg {
             float: right;
-            height: 75px;
+            height: 4.75em;
             margin-top: -1.5em;
             padding-left: 1em;
         }
@@ -141,7 +141,18 @@
             letter-spacing: 3px;
             z-index: 0;
         }
-    }
+
+        @media screen and (max-width: 700px) {
+            body {
+                font-size: 0.8em;
+            }
+            #mooc {
+                font-size: 1em;
+            }
+            .course {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
