@@ -41,7 +41,7 @@
         section {
             background-color: white;
             box-shadow: 0px 0px 10px 0px #333;
-            color: black;
+            color: #3B5998;
             margin: 1em;
             height: 17em;
             position: relative;
@@ -78,19 +78,39 @@
             height: 2em;
             bottom: 0;
             padding: 0 1.5em;
+            width: calc(100% - 3em);
         }
 
-        .card-footer> a {
+        .card-footer a {
             font-size: 1em;
             font-weight: 700;
-            color: #3B5998;
+            color: inherit;
             padding: 0.5em;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .card-footer> a:hover {
+        .card-footer a:hover {
             background: #ddd;
+        }
+
+        .card-footer> div {
+            display: inline-block;
+        }
+
+        .skill-tag {
+            float: right;
+            color: white;
+        }
+
+        .skill-tag> a {
+            background: #3B5998;
+            padding: 0.4em 0.9em;
+            margin: -0.5em 0.25em;
+            border-radius: 1.125em;
+            font-weight: 200;
+            font-size: 0.72em;
+            text-transform: uppercase;
         }
 
         h1 {
@@ -141,7 +161,7 @@
     </div>
 
     <main>
-        <section>
+        <section style="color: orange;">
             <div class="bg-image" style="background:url('http://static1.squarespace.com/static/52475fc3e4b0b4dd6e242d6b/t/53b37199e4b0e928e7123e41/1452120179226/?format=300w') orange no-repeat center;">
             </div>
             <div class="card-content">
@@ -151,12 +171,18 @@
                 <p>Through Generate as project lead, my team and I are developing the wireless controller for the Dash system.</p>
             </div>
             <div class="card-footer">
-                <a href="http://dashelectric.com/">Dash</a>
-                <a href="http://www.northeastern.edu/generate/">Generate</a>
+                <div>
+                    <a href="http://dashelectric.com/">Dash</a>
+                    <a href="http://www.northeastern.edu/generate/">Generate</a>
+                </div>
+                <div class="skill-tag">
+                    <a style="background-color:orange" href="http://dashelectric.com/">Dash</a>
+                    <a style="background-color:orange" href="http://www.northeastern.edu/generate/">Generate</a>
+                </div>
             </div>
         </section>
 
-        <section>
+        <section style="color:#01A0FC">
             <div class="bg-image" style="background:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/a8d8dc30233101.56197092259ee.jpg') no-repeat center;"></div>
             <div class="card-content">
                 <div class="tag">Hardware</div>
@@ -167,6 +193,11 @@
             <div class="card-footer">
                 <a href="https://www.behance.net/gallery/30233101/Knightly-A-Smart-Safety-Net">Knightly</a>
                 <a href="http://www.northeastern.edu/generate/">Generate</a>
+                <div class="skill-tag">
+                    <a style="background-color:#01A0FC">PCB</a>
+                    <a style="background-color:#01A0FC">EAGLE</a>
+                    <a style="background-color:#01A0FC">MBED</a>
+                </div>
             </div>
         </section>
 
@@ -181,6 +212,11 @@
             <div class="card-footer">
                 <a href="#">Roadmap</a>
                 <a href="https://github.com/melloa/melloa.github.io">GitHub</a>
+                <div class="skill-tag">
+                    <a>HTML</a>
+                    <a>CSS</a>
+                    <a>Javascript</a>
+                </div>
             </div>
         </section>
 
@@ -195,6 +231,10 @@
             <div class="card-footer">
                 <a href="#">link 1</a>
                 <a href="#">link 2</a>
+                <div class="skill-tag">
+                    <a>C</a>
+                    <a>PCB</a>
+                </div>
             </div>
         </section>
 
@@ -209,6 +249,10 @@
             <div class="card-footer">
                 <a href="breakout.html">Play!</a>
                 <a href="https://github.com/melloa/melloa.github.io/blob/master/breakout.html">GitHub</a>
+                <div class="skill-tag">
+                    <a>HTML5</a>
+                    <a>Javascript</a>
+                </div>
             </div>
         </section>
 
@@ -223,6 +267,10 @@
             <div class="card-footer">
                 <a href="#">link 1</a>
                 <a href="#">link 2</a>
+                <div class="skill-tag">
+                    <a>Arduino</a>
+                    <a>Hardware</a>
+                </div>
             </div>
         </section>
 
@@ -235,8 +283,12 @@
                 <p></p>
             </div>
             <div class="card-footer">
-                <a href="#">link 1</a>
-                <a href="#">link 2</a>
+                <a href="#">YouTube</a>
+                <div class="skill-tag">
+                    <a>Simulink</a>
+                    <a>C</a>
+                    <a>Bluetooth</a>
+                </div>
             </div>
         </section>
 
@@ -265,6 +317,9 @@
             <div class="card-footer">
                 <a href="#">link 1</a>
                 <a href="#">link 2</a>
+                <div class="skill-tag">
+                    <a>Woodworking</a>
+                </div>
             </div>
         </section>
     </main>
