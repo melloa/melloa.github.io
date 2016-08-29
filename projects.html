@@ -21,6 +21,21 @@
             max-width: 40em;
             width: 100%;
             float: right;
+            opacity: 0;
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            animation-delay: 0.5s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         section {
@@ -258,6 +273,7 @@
         .row1> p,
         .row2> p {
             position: relative;
+            white-space: nowrap;
             top: 0;
             left: 0;
             padding: 0;
