@@ -115,8 +115,20 @@
         }
 
         i {
+            position: relative;
             color: white;
             transition: all 0.3s ease;
+        }
+
+        i:after {
+            position: absolute;
+            content: attr(data-icon);
+            display: none;
+            font-size: 0.35em;
+            font-family: 'Open Sans';
+            font-weight: 300;
+            left: -4px;
+            bottom: -1.5em;
         }
 
         i:hover {
@@ -164,6 +176,9 @@
                 text-align: center;
                 width: 100%;
             }
+            i:after {
+                display: block;
+            }
         }
 
         @media screen and (max-width: 750px) {
@@ -191,10 +206,10 @@
         </div>
         <nav>
             <ul>
-                <li><i class="fa fa-user fa-2x"></i></li>
-                <li><a href="projects.html"><i class="fa fa-rocket fa-2x"></i></a></li>
-                <li><a href="resume.html"><i class="fa fa-file-text fa-2x"></i></a></li>
-                <li><i id="contact" class="fa fa-pencil fa-2x"></i></li>
+                <li><i data-icon="about" class="fa fa-user fa-2x"></i></li>
+                <li><a href="projects.html"><i data-icon="projects" class="fa fa-rocket fa-2x"></i></a></li>
+                <li><a href="resume.html"><i data-icon="resum‎é" class="fa fa-file-text fa-2x"></i></a></li>
+                <li><i data-icon="contact" id="contact" class="fa fa-pencil fa-2x"></i></li>
             </ul>
         </nav>
     </main>
