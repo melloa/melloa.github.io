@@ -31,9 +31,11 @@
         }
 
         h2 {
+            font-size: 1.5em;
             font-weight: 200;
             color: white;
-            margin: 0;
+            margin: 1.2em 0 0 0;
+            line-height: 1.75em;
         }
 
         canvas {
@@ -98,11 +100,19 @@
             h1 {
                 font-size: 4.5em;
             }
+
+            h2 {
+              font-size: 1.25em;
+            }
         }
 
         @media screen and (max-width: 350px) {
             h1 {
                 font-size: 3.5em;
+            }
+
+            h2 {
+              font-size: 1.1em;
             }
         }
 
@@ -118,11 +128,9 @@
         @keyframes clouds {
             from {
                 transform: translateX(-120%);
-                ;
             }
             to {
                 transform: translateX(102vw);
-                ;
             }
         }
 
@@ -318,6 +326,7 @@
             "Wash. Rinse. Repeat.",
             "The milk man.",
             "7 / 10 would recommend to a friend. 8 of 9 found this review helpful",
+            "is rapidly running out of ideas for a subtitle."
         ];
 
         function createStar() {
@@ -346,7 +355,7 @@
             }
         }
 
-        var index = Math.floor(Math.random() * tagline.length);
+        var index = Math.floor(Math.random() * (tagline.length - 1));
 
         function animateTagLine() {
             $("h2").animate({
