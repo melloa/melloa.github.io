@@ -15,6 +15,7 @@
         body {
             color: #FFFFFF;
             font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+            font-size: 16px;
         }
 
         main {
@@ -145,6 +146,47 @@
             text-align: center;
             text-transform: uppercase;
         }
+
+        @media screen and (max-width: 450px) {
+            .card-footer {
+                background-color: white;
+                padding: 0 0.625em;
+                width: calc(100% - 1.25em);
+            }
+            .card-footer a {
+                font-size: 0.875em;
+            }
+            .skill-tag> a {
+                margin: -0.5em 0em;
+                font-size: 0.625em;
+            }
+            .card-content {
+                padding: 1em 1em;
+            }
+            h1 {
+                font-size: 1.625em;
+            }
+            h2 {
+                font-size: 1.125em;
+            }
+            .card-content> p {
+                color: #666;
+                font-weight: 300;
+                font-size: 0.8em;
+            }
+            .single-line-padding> h1 {
+                padding-top: 0.26em;
+            }
+            .card-content:hover {
+                height: 9em;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            section {
+                margin: 1em 0;
+            }
+        }
     </style>
 </head>
 
@@ -164,7 +206,7 @@
         <section style="color: orange;">
             <div class="bg-image" style="background:url('http://static1.squarespace.com/static/52475fc3e4b0b4dd6e242d6b/t/53b37199e4b0e928e7123e41/1452120179226/?format=300w') orange no-repeat center;">
             </div>
-            <div class="card-content">
+            <div class="card-content single-line-padding">
                 <div class="tag">Hardware</div>
                 <h1>Dash</h1>
                 <h2>Last mile electric longboard</h2>
@@ -203,7 +245,7 @@
 
         <section>
             <div class="bg-image"></div>
-            <div class="card-content">
+            <div class="card-content single-line-padding">
                 <div class="tag">Software/Design</div>
                 <h1>Personal website</h1>
                 <h2>Everything you have seen so far ...</h2>
@@ -278,8 +320,8 @@
             <div class="bg-image"></div>
             <div class="card-content">
                 <div class="tag">Hardware</div>
-                <h1>Wiimote Controlled Robotic Arm</h1>
-                <h2>Class project using FPGAs and microprocessor of Zedboard</h2>
+                <h1>Wiimote Robotic Arm</h1>
+                <h2>Class project using FPGAs and microprocessor</h2>
                 <p></p>
             </div>
             <div class="card-footer">
@@ -308,7 +350,7 @@
 
         <section>
             <div class="bg-image"></div>
-            <div class="card-content">
+            <div class="card-content single-line-padding">
                 <div class="tag">Hardware</div>
                 <h1>Project Explorer</h1>
                 <h2>Building an electric guitar</h2>
