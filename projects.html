@@ -147,6 +147,12 @@
             text-transform: uppercase;
         }
 
+        @media screen and (max-width: 900px) {
+            svg {
+                display: none;
+            }
+        }
+
         @media screen and (max-width: 450px) {
             .card-footer {
                 background-color: white;
@@ -195,6 +201,13 @@
 </head>
 
 <body>
+    <a href="./">
+        <svg x="0px" y="0px" width="200px" height="100px" viewBox="0 0 400 100" version="1.1">
+            <rect x="108" y="50" rx="5px" ry="5px" width="70px" height="20px" fill="#eee" transform="rotate(-45 125 50)"></rect>
+            <rect x="125" y="50" rx="5px" ry="5px" width="70px" height="20px" fill="#eee" transform="rotate(45 125 50)"></rect>
+            <rect x="140" y="52" rx="5px" ry="5px" width="100px" height="20px" fill="#eee"></rect>
+        </svg>
+    </a>
     <div class="text">
         <div class="row1">
             <p>Personal</p>
