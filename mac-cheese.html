@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2c3e50;
+            font-family: "Source Sans Pro", sans-serif;
+            overflow-y: hidden;
+        }
+
+        h1 {
+            color: #ddd;
+            font-size: 3em;
+            margin: auto;
+            text-align: center;
+        }
+
+        section {
+            position: relative;
+            background: url('res/mac-cheese/kraft-original.png') white;
+            background-size: contain;
+            height: 76vh;
+            width: 37.5vh;
+        }
+
+        section> h2 {
+            position: absolute;
+            background-color: white;
+            color: #777;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 0.2em 0;
+            border-bottom: #aaa 1px solid;
+            text-align: center;
+        }
+
+        .card-content {
+            position: absolute;
+            background-color: white;
+            border-top: solid #ccc 1px;
+            cursor: pointer;
+            padding: 1em 2em;
+            overflow: hidden;
+            height: 0em;
+            bottom: 0em;
+            transition: height 0.5s ease-in-out;
+        }
+
+        .card-content:hover {
+            height: 20em;
+        }
+
+        .card-content> h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #343D3A;
+            margin: 0;
+        }
+
+        .card-content>h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #555;
+            margin: 0;
+        }
+
+        .card-content> p {
+            color: #666;
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body onresize="init()">
+    <h1>Mac &amp; Cheese PowerRanks</h1>
+    <section>
+        <h2>Rank 1</h2>
+        <div class="card-content single-line-padding">
+            <div class="tag">Hardware</div>
+            <h1>Dash</h1>
+            <h2>Last mile electric longboard</h2>
+            <p>Through Generate as project lead, my team and I are developing the wireless controller for the Dash system.</p>
+        </div>
+    </section>
+</body>
+
+</html>
