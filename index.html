@@ -59,7 +59,7 @@
 
         nav {
             position: fixed;
-            top: 50%;
+            top: 37.5%;
             right: 3em;
             margin-top: -168px;
             font-size: 1.5em;
@@ -117,13 +117,14 @@
         i {
             position: relative;
             color: white;
+            padding-top: 1em;
             transition: all 0.3s ease;
         }
 
         i:after {
             position: absolute;
             content: attr(data-icon);
-            display: none;
+            display: block;
             font-size: 0.35em;
             font-family: 'Open Sans';
             font-weight: 300;
@@ -132,7 +133,7 @@
         }
 
         i:hover {
-            color: #bdc3c7;
+            color: #aaa;
         }
 
         @keyframes clouds {
@@ -244,7 +245,7 @@
             animateTagLine();
             initializeMouseOver();
             initializeAnimations();
-            setInterval(animateTagLine, 5000);
+            setInterval(animateTagLine, 4000);
         });
 
         function init() {
@@ -282,7 +283,6 @@
         }
 
         function initializeAnimations() {
-            // Contact animation
             $('#contact').click(function() {
                 $('#title').fadeOut('slow');
                 status = "stop-redraw";
@@ -290,7 +290,6 @@
                 $('svg').fadeIn('fast');
                 $('#myCanvas').fadeOut('slow');
             });
-            // -----------------
         }
 
         function drawStar(star, context) {
@@ -345,10 +344,10 @@
             "gave a man a fish.",
             "has hands like a gazelle.",
             "The gilded goose.",
-            "Juicy and complex",
+            //"Juicy and complex",
             "The oracle of time.",
             "The Great Purveyor.",
-            "Buffalo buffalo buffalo buffalo. Buffalo.",
+            //"Buffalo buffalo buffalo buffalo. Buffalo.",
             "doesn't know why he makes guacamole in such great quantities",
             "Thinly lather before basking in the sun",
             "Wash. Rinse. Repeat.",
@@ -388,11 +387,11 @@
         function animateTagLine() {
             $("h2").animate({
                 opacity: 0
-            }, 1000, function() {
+            }, 800, function() {
                 $(this).text(tagline[index % tagline.length])
                     .animate({
                         opacity: 1
-                    }, 1000);
+                    }, 800);
                 index++;
             });
         }
