@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: linear-gradient(#000 100%, #9ACCF5 200%);
+            font-size: 16px;
+            font-family: "Open sans";
+            height:700%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: white;
+            font-size: 5.75em;
+            margin: 0;
+            text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 200;
+            color: white;
+            margin: 1.2em 0 0 0;
+            line-height: 1.75em;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        nav {
+          background-color: black;
+          border-bottom: solid 1px #333;
+          color: rgba(153, 153, 153, 0.8);
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 5px;
+          opacity: 0;
+          padding: 5px;
+          position: fixed;
+          width: 100%;
+          z-index: 99;
+        }
+
+        nav> span {
+          padding-left: 10%;
+        }
+
+        main {
+            line-height: 5.25em;
+            height: 10.5em;
+        }
+
+        main> div {
+            position: absolute;
+            top: 50%;
+            margin-top: -5em;
+            margin-left: 7%;
+        }
+
+        footer {
+          position: fixed;
+          left: 50%;
+          width: 100%;
+          bottom: 5%;
+          opacity: 0.1;
+        }
+        .down-arrow {
+          border: solid white;
+          border-width: 0 5px 5px 0;
+          display: inline-block;
+          padding: 14px;
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+        }
+
+        @media screen and (max-width: 950px) {
+            main {
+                margin: auto;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 525px) {
+            h1 {
+                font-size: 4.5em;
+            }
+            h2 {
+                font-size: 1.25em;
+            }
+
+            nav {
+              display: none;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            h1 {
+                font-size: 3.5em;
+            }
+            h2 {
+                font-size: 1.1em;
+            }
+        }
+
+
+        @media screen and (max-width: 1050px) {
+            main> div {
+                top: 45%;
+                margin-top: -5em;
+                margin-left: 0;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body onresize="init()">
+    <nav>
+        <span>ABOUT</span>
+        <span>EXPERIENCE</span>
+        <span>PROJECTS</span>
+        <span>CONTACT</span>
+    </nav>
+    <canvas id="myCanvas"></canvas>
+    <main>
+        <div id="title">
+            <h1>Andrew Mello</h1>
+            <h2>... ... ... </h2>
+        </div>
+    </main>
+    <footer>
+      <i class="down-arrow"></i>
+    </footer>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var speed_reducer = 1
+
+        $(document).ready(function() {
+            init();
+            animate(star, canvas, context);
+            animateTagLine();
+            setInterval(animateTagLine, 4000);
+        });
+
+        function init() {
+            canvas = document.getElementById("myCanvas");
+            canvas.width = $(window).width();
+            canvas.height = $(window).height();
+        }
+
+        window.requestAnimFrame = (function(callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function drawStar(star, context) {
+            var speed = 2 * star.r / speed_reducer;
+            // pixels / second
+            if (star.x < canvas.width && star.y < canvas.height) {
+                star.x += speed;
+                star.y += speed * 0.6;
+            } else {
+                var direction = Math.round(Math.random());
+                var height = canvas.height / 2;
+                star.x = direction > 0 ? Math.random() * canvas.width : -10;
+                star.y = direction < 1 ? Math.random() * canvas.height : -10;
+                star.r = Math.ceil(6 * Math.random())
+            }
+            context.beginPath();
+            context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
+            context.fillStyle = '#ffffff';
+            context.fill();
+            context.lineWidth = star.borderWidth;
+        }
+
+        function animate(star, canvas, context) {
+            if (star.length <= 4) {
+                star.push(new createStar());
+            }
+            // clear
+            context.fillStyle = '#000000';
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            // update
+            for (var i = 0; i < star.length; i++) {
+                drawStar(star[i], context);
+            }
+            // draw rocket
+            //context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
+            rocket.move();
+            // request new frame
+            requestAnimFrame(function() {
+                animate(star, canvas, context);
+            });
+        }
+        var tagline = [
+            "A man. A plan. Panama.",
+            "A man of measure.",
+            "gave a man a fish.",
+			       //"recited The Iliad completely in Wingdings",
+            "has hands like a gazelle.",
+            "The gilded goose.",
+            //"Juicy and complex",
+            "The oracle of time.",
+            "The Great Purveyor.",
+            //"Buffalo buffalo buffalo buffalo. Buffalo.",
+            "doesn't know why he makes guacamole in such great quantities",
+            "Thinly lather before basking in the sun",
+            "Wash. Rinse. Repeat.",
+            "The milk man.",
+            "7 / 10 would recommend to a friend",
+			      "8 of 9 found this review helpful.",
+            "is rapidly running out of ideas for a subtitle."
+        ];
+
+        function createStar() {
+            this.x = (Math.random() * 2 * canvas.width) - canvas.width,
+                this.y = -1 * 100 * Math.random(),
+                this.r = 6 * Math.random() + 1
+        };
+
+        var star = [];
+
+        var rocket = {
+            x: canvas.width,
+            y: canvas.height * 3 / 4,
+            width: 200,
+            height: 201,
+            move: function() {
+                rocket.x -= Math.random() * 3 - 1;
+                rocket.y -= Math.random() * 3 - 1;
+                if (rocket.x + rocket.width < 0 || rocket.y + rocket.height < 0) {
+                    rocket.x = Math.random() * canvas.width;
+                    rocket.y = canvas.height;
+                    var random = Math.random();
+                    rocket.width = random * 300;
+                    rocket.height = random * 300;
+                }
+            }
+        }
+
+        var index = Math.floor(Math.random() * (tagline.length - 1));
+
+        function animateTagLine() {
+            $("h2").animate({
+                opacity: 0
+            }, 800, function() {
+                $(this).text(tagline[index % tagline.length])
+                    .animate({
+                        opacity: 1
+                    }, 800);
+                index++;
+            });
+        }
+
+        $(document).scroll(function(){
+            var scroll_position = Math.round(($(window).scrollTop())/$(window).height() * 100);
+            console.log("scroll: " + scroll_position + "%")
+            nav_visibility = checkLimits((scroll_position - 45)*2);
+            $("nav").css("opacity",""+nav_visibility/100+"");
+            $("footer").css("opacity",""+checkLimits(10 - 0.2*scroll_position)/100+"");
+            speed_reducer = 1 + checkLimits(scroll_position - 45)
+            //console.log("nav: " + nav_visibility + "%")
+        });
+
+        function checkLimits(x){
+          if(x < 0) {
+            return 0;
+          } else if (x > 100) {
+            return 100;
+          }
+          return x;
+        }
+    </script>
+</body>
+
+</html>
