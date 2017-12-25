@@ -19,6 +19,7 @@
     h1 {
       font-size: 2.5em;
       letter-spacing: 1px;
+      margin-bottom: 45px;
       text-align: center;
     }
 
@@ -40,8 +41,9 @@
     }
 
     img {
-      width: 525px;
       margin: 25px;
+      max-width: 55%;
+      width: 525px;
     }
 
     text {
@@ -60,13 +62,23 @@
       font-size: 0.3em;
       font-weight: 600;
     }
+
+
+    @media screen and (max-width: 1000px) {
+      img {
+        margin: 4% 0 0 4%;
+      }
+      h1 {
+        font-size: 4vw;
+        margin-bottom: 5%;
+      }
+    }
   </style>
 </head>
 
 <body>
   <img src="./res/generate_logo.png"></img>
   <h1>Product Development Strategy</h1>
-  <br /><br />
   <svg viewBox="0 0 220 245" preserveAspectRatio="xMidYMin meet"><g>
     <!-- Lines -->
     <path id="ideation" d="M110 10 v70"></path>
