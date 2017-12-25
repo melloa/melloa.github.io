@@ -1,21 +1,19 @@
-<html lang="en" class="wf-fontawesome-n4-active wf-active">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>The Man Behind the Legend</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700&amp;lang=en" />
 
   <style>
     body {
-      background-image: linear-gradient(#25AAE1 92%, #EE2C61 92%, #EE2C61), linear-gradient(#EE2C61 73%, #FFC313 73%, #FFC313);
+      background-image: linear-gradient(#25AAE1 92%, #EE2C61 92%, #EE2C61), linear-gradient(#EE2C61 71.5%, #FFC313 71.5%, #FFC313);
       background-size: 100% 50%, 100% 100%;
       background-repeat: no-repeat;
       color: white;
       font-family: 'Lato', sans-serif;
       margin: 0px;
-      /*background: linear-gradient(#25AAE1, #25AAE1 700px, #EE2C61 701px, #EE2C61 1600px, #FFC313 1600px, #FFC313 100%);*/
     }
 
     h1 {
@@ -33,7 +31,7 @@
       stroke-linecap: round;
       stroke-linejoin: round;
       width: 100%;
-      max-width: 500px;
+      max-width: 1000px;
     }
 
     circle {
@@ -45,6 +43,23 @@
       width: 525px;
       margin: 25px;
     }
+
+    text {
+      stroke-width: 0;
+      font-size: 0.4em;
+      font-weight: 200;
+    }
+
+    text.heading {
+      font-size: 0.6em;
+      font-weight: 400;
+      text-anchor: end;
+    }
+
+    text.branch {
+      font-size: 0.3em;
+      font-weight: 600;
+    }
   </style>
 </head>
 
@@ -52,29 +67,72 @@
   <img src="./res/generate_logo.png"></img>
   <h1>Product Development Strategy</h1>
   <br /><br />
-  <h2 style="position: absolute; top: 90%; left: 30px;">Works-Like</h2>
-  <h2 style="position: absolute; top: 90%; right: 30px;">Looks-Like</h2>
-  <svg viewBox="0 0 100 245" preserveAspectRatio="xMidYMin meet"><g>
-    <path id="ideation" d="M50 10 v70"></path>
-    <path id="electrical" d="M50 80 l-40 20 v40 l 40 20"></path>
-    <path id="mechanical" d="M50 80 l 40 20 v40 l-40 20"></path>
+  <svg viewBox="0 0 220 245" preserveAspectRatio="xMidYMin meet"><g>
+    <!-- Lines -->
+    <path id="ideation" d="M110 10 v70"></path>
+    <path id="electrical" d="M110 80 l-40 20 v40 l 40 20"></path>
+    <path id="mechanical" d="M110 80 l 40 20 v40 l-40 20"></path>
     <!--<path id="firmware"   d="M60 80 h-40 l-20 10 v40 l10 10 v10 l30 20"></path>
-    <path id="design" d="M50 80 h20 l10 10 v40 l-10 10 v10 l-30 20"></path>-->
-    <path id="manufacturing" d="M50 160 v70"></path>
-    <circle cx="50" cy="10" r="4" fill="#25AAE1"></circle>
-    <circle cx="50" cy="30" r="4" fill="#25AAE1"></circle>
-    <circle cx="50" cy="50" r="4" fill="#25AAE1"></circle>
-    <circle cx="50" cy="70" r="4" fill="#25AAE1"></circle>
-    <circle cx="10" cy="100" r="4" fill="#EE2C61"></circle>
-    <circle cx="10" cy="120" r="4" fill="#EE2C61"></circle>
-    <circle cx="10" cy="140" r="4" fill="#EE2C61"></circle>
-    <circle cx="90" cy="100" r="4" fill="#EE2C61"></circle>
-    <circle cx="90" cy="120" r="4" fill="#EE2C61"></circle>
-    <circle cx="90" cy="140" r="4" fill="#EE2C61"></circle>
-    <circle cx="50" cy="170" r="4" fill="#FFC313"></circle>
-    <circle cx="50" cy="190" r="4" fill="#FFC313"></circle>
-    <circle cx="50" cy="210" r="4" fill="#FFC313"></circle>
-    <circle cx="50" cy="230" r="4" fill="#FFC313"></circle>
+    <path id="design" d="M110 80 h20 l10 10 v40 l-10 10 v10 l-30 20"></path>-->
+    <path id="manufacturing" d="M110 160 v70"></path>
+    <!-- Stops -->
+    <circle cx="110" cy="10" r="4" fill="#25AAE1"></circle>
+    <circle cx="110" cy="30" r="4" fill="#25AAE1"></circle>
+    <circle cx="110" cy="50" r="4" fill="#25AAE1"></circle>
+    <circle cx="110" cy="70" r="4" fill="#25AAE1"></circle>
+    <circle cx="70" cy="100" r="4" fill="#EE2C61"></circle>
+    <circle cx="70" cy="120" r="4" fill="#EE2C61"></circle>
+    <circle cx="70" cy="140" r="4" fill="#EE2C61"></circle>
+    <circle cx="150" cy="100" r="4" fill="#EE2C61"></circle>
+    <circle cx="150" cy="120" r="4" fill="#EE2C61"></circle>
+    <circle cx="150" cy="140" r="4" fill="#EE2C61"></circle>
+    <circle cx="110" cy="170" r="4" fill="#FFC313"></circle>
+    <circle cx="110" cy="190" r="4" fill="#FFC313"></circle>
+    <circle cx="110" cy="210" r="4" fill="#FFC313"></circle>
+    <circle cx="110" cy="230" r="4" fill="#FFC313"></circle>
+    <!-- Ideation Text -->
+    <text x="120" y="12" fill="white">Problem Statement</text>
+    <text x="120" y="32" fill="white">Research / Requirements</text>
+    <text x="120" y="52" fill="white">First Concept</text>
+    <text x="120" y="72" fill="white">System Architecture</text>
+    <!-- Looks-like Text -->
+    <text x="160" y="98" fill="white">
+      <tspan x="160" dy="0">Ideate on designs</tspan>
+      <tspan x="160" dy="1.2em">Perform user testing</tspan>
+    </text>
+    <text x="160" y="119" fill="white">
+      <tspan x="160" dy="0">Select optimal design</tspan>
+      <tspan x="160" dy="1.2em">Flush out all use cases</tspan>
+    </text>
+    <text x="160" y="139" fill="white">
+      <tspan x="160" dy="0">Merge design with</tspan>
+      <tspan x="160" dy="1.2em">mechanical features</tspan>
+    </text>
+    <!-- Works-like Text -->
+    <text text-anchor="end" y="98" fill="white">
+      <tspan x="60" dy="0">Build prototype using</tspan>
+      <tspan x="60" dy="1.2em">premade solutions</tspan>
+    </text>
+    <text text-anchor="end" y="119" fill="white">
+      <tspan x="60" dy="0">Integrate prototype</tspan>
+      <tspan x="60" dy="1.2em">into one design</tspan>
+    </text>
+    <text text-anchor="end" y="139" fill="white">
+      <tspan x="60" dy="0">Test functionality and</tspan>
+      <tspan x="60" dy="1.2em">mounting in Looks-like</tspan>
+    </text>
+    <!-- Manufacturing Text -->
+    <text x="120" y="172" fill="white">Engineering Validation Test (EVT)</text>
+    <text x="120" y="192" fill="white">Design Verification Test (DVT)</text>
+    <text x="120" y="212" fill="white">Production Verification Test (PVT)</text>
+    <text x="120" y="232" fill="white">Production</text>
+    <!-- Heading Text -->
+    <text class="heading" x="90" y="44" fill="white">Ideation</text>
+    <text class="heading" style="text-anchor:middle;" x="110" y="124" fill="white">Development</text>
+    <text class="heading" x="90" y="204" fill="white">Manufacturing</text>
+    <!-- Branch Text -->
+    <text class="branch" x="20" y="87" fill="white">Works-Like</text>
+    <text class="branch" x="200" y="87" style="text-anchor:end;" fill="white">Looks-Like</text>
 </g></svg>
 
 
