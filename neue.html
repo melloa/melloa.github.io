@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <title>The Man Behind the Legend</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-  <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
   <style>
     html {
       height: 100%;
@@ -16,7 +15,7 @@
     body {
       background: linear-gradient(#000 100%, #9ACCF5 200%);
       font-size: 16px;
-      font-family: "Open sans";
+      font-family: 'Open Sans', sans-serif;
       height: 560%;
       margin: 0;
       overflow-x: hidden;
@@ -25,6 +24,7 @@
     h1 {
       color: white;
       font-size: 5.75em;
+      font-weight: 800;
       margin: 0;
       text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
       text-transform: uppercase;
@@ -57,14 +57,12 @@
       position: fixed;
       width: 100%;
       z-index: 99;
+      display: none;
     }
 
     nav>span {
       padding-left: 10%;
       float: left;
-    }
-
-    main {
     }
 
     main>div {
@@ -80,10 +78,29 @@
       position: absolute;
       color: white;
       width: 50%;
-      font-family: Georgia;
-      font-size: 1.75em;
+      font-weight: 200;
+      font-size: 1.5em;
       letter-spacing: 1px;
       line-height: 1.75em;
+      text-align: justify;
+    }
+
+    content.about {
+      top: 150%;
+      right: 5%;
+    }
+
+    content.experience {
+      top: 300%;
+      right: 12.5%;
+      width: 75%;
+    }
+
+    content.contact {
+      text-align: center;
+      top: 550%;
+      right: 12.5%;
+      width: 75%;
     }
 
     footer {
@@ -113,6 +130,17 @@
         text-align: center;
         width: 100%;
       }
+
+      content.about {
+        right: 12.5%;
+        width: 75%;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      content {
+        font-size: 1em;
+      }
     }
 
     @media screen and (max-width: 525px) {
@@ -122,7 +150,9 @@
       h2 {
         font-size: 1.25em;
       }
-
+      content {
+        font-size: 0.75em;
+      }
       nav {
         display: none;
       }
@@ -163,17 +193,20 @@
       <h1>Andrew Mello</h1>
       <h2>... ... ... </h2>
     </div>
-    <content style="text-align:right; top:150%; right:5%">
-        A lot of text about myself. This will include thinks I have done like my personal projects and work experience as well as what I want to do in the future as well as my resume. A lot of text about myself. This will include thinks I have done like my personal projects and work experience as well as what I want to do in the future as well as my resume.
+    <content class="about">
+      hello, my name is Andrew Mello. I'm sorry, if I had known a guest was coming over I would have cleaned the place up better. I feel terrible. Please, make yourself at home.
+      <br><br> A little about myself: I like designing circuits, product development, occassionally writing software but I also enjoy the outdoors, roadtrips, working on cars (mainly my Miata) and believe spontaneity breeds adventure. Currently I'm a
+      5th year student at Northeastern University getting both my Bachelor's degree in Electrical Engineering and Master's degree in Computer Engineering specializing in Computer Vision / Machine Learning in May 2018. I firmly believe in being a generalist
+      and constantly exposing myself to different challenges.
     </content>
-    <content style="text-align:center; top:300%; right:12.5%; width:75%">
-        My professional experience have been through internships and co-ops at Apple, Amazon, Boston Engineering, MIT Lincoln Labs, and Naval Undersea Warfare Center as well as multiple leadership experiences within Generate, Northeastern's Student-Led Product Development Studio.
+    <content class="experience">
+      My experiences have been through professional internships, personal projects, and my work with Generate, Northeastern University's Student-Led Product Development.<br><br> Professionally, I've interned at Apple as a hardware engineer on the Audio
+      Products Team, Amazon as a Systems Engineer, Boston Engineering desiging an Andriod app for tablet embedded in a device, and MIT Lincoln Labs and Naval Undersea Warfare Center as an engineering intern. More information can be found in my portfolio.<br><br>      With Generate, I have led two teams of six to help productize client's ventures. The first client was Knightly, a device that increases the safety of students on campus. The second client was Dash Electric, an electric longboard featuring in-hub
+      motors and a strong focus on design. My senior year I became the Director of the Build Studio, where I coached project leads on effective strategies to manage peers. I also built up the documention, templates, product development strategy, and internal
+      tools that make Generate more effective. More can be seen on my page about Generate.<br><br> Lastly, I have had many personal project that keep me busy in my spare time (like this site!). They can be found here.
     </content>
-    <content style="text-align:center; top:450%; right:12.5%; width:75%">
-        Personally I have multiple projects that I have worked on that can be seen here.
-    </content>
-    <content style="text-align:center; top:550%; right:12.5%; width:75%">
-        More information and way to contact me is through LinkedIn.
+    <content class="contact">
+      I hope you enjoyed your stay. Please don't forget you coat on the way out!<br> If you like to contact me, please reach out to me through LinkedIn.
     </content>
   </main>
   <footer>
@@ -247,8 +280,8 @@
     var tagline = [
       "A man. A plan. Panama.",
       "A man of measure.",
+      "A journey through space and time",
       "gave a man a fish.",
-      //"recited The Iliad completely in Wingdings",
       "has hands like a gazelle.",
       "The gilded goose.",
       //"Juicy and complex",
