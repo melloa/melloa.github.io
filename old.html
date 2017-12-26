@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Man Behind the Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="res/style_fonts.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://use.fontawesome.com/8b02fe2c54.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: linear-gradient(#000 100%, #9ACCF5 200%);
+            font-size: 16px;
+            font-family: "Open sans";
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: white;
+            font-size: 5.75em;
+            margin: 0;
+            text-shadow: 3px 3px 0px rgba(153, 153, 153, 0.8);
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 200;
+            color: white;
+            margin: 1.2em 0 0 0;
+            line-height: 1.75em;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        main {
+            line-height: 5.25em;
+            height: 10.5em;
+        }
+
+        main> div {
+            position: fixed;
+            top: 50%;
+            margin-top: -5em;
+            margin-left: 7%;
+        }
+
+        nav {
+            position: fixed;
+            top: 37.5%;
+            right: 3em;
+            margin-top: -168px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        nav> a {
+            color: white;
+            text-decoration: none;
+            padding-top: 0.1em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            padding-bottom: 0.2em;
+        }
+
+        nav> a:hover {
+            text-decoration: none;
+        }
+
+        nav> span {
+            font-weight: 200;
+        }
+
+        article {
+            background-color: #9ACCF5;
+            height: 100%;
+        }
+
+        @media screen and (max-width: 950px) {
+            main {
+                margin: auto;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 525px) {
+            h1 {
+                font-size: 4.5em;
+            }
+            h2 {
+                font-size: 1.25em;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            h1 {
+                font-size: 3.5em;
+            }
+            h2 {
+                font-size: 1.1em;
+            }
+        }
+
+        i {
+            position: relative;
+            color: white;
+            padding-top: 1em;
+            transition: all 0.3s ease;
+        }
+
+        i:after {
+            position: absolute;
+            content: attr(data-icon);
+            display: block;
+            font-size: 0.35em;
+            font-family: 'Open Sans';
+            font-weight: 300;
+            left: -3px;
+            bottom: -1.5em;
+        }
+
+        i:hover {
+            color: #aaa;
+        }
+
+        @keyframes clouds {
+            from {
+                transform: translateX(-120%);
+            }
+            to {
+                transform: translateX(102vw);
+            }
+        }
+
+        svg {
+            animation-name: clouds;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            display: none;
+            margin-bottom: 8em;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        @media screen and (max-width: 1050px) {
+            li {
+                float: left;
+                padding: 1.5em;
+                font-size: 1.5em;
+            }
+            nav {
+                font-size: 1.2em;
+                text-align: center;
+                top: 75%;
+                right: calc(50% - 290px);
+                margin: 0;
+            }
+            main> div {
+                top: 45%;
+                margin-top: -5em;
+                margin-left: 0;
+                text-align: center;
+                width: 100%;
+            }
+            i:after {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 750px) {
+            nav {
+                font-size: 1em;
+                right: calc(50% - 230px);
+            }
+        }
+
+        @media screen and (max-width: 540px) {
+            nav {
+                font-size: 0.5em;
+                right: calc(50% - 110px);
+            }
+        }
+    </style>
+</head>
+
+<body onresize="init()">
+    <canvas id="myCanvas"></canvas>
+    <main>
+        <div id="title">
+            <h1>Andrew Mello</h1>
+            <h2>... ... ... </h2>
+        </div>
+        <nav>
+            <ul>
+                <li><i data-icon="about" class="fa fa-user fa-2x"></i></li>
+                <li><a href="projects.html"><i data-icon="projects" class="fa fa-rocket fa-2x"></i></a></li>
+                <li><a href="resume.html"><i data-icon="resum‎é" class="fa fa-file-text fa-2x"></i></a></li>
+                <li><i data-icon="contact" id="contact" class="fa fa-pencil fa-2x"></i></li>
+            </ul>
+        </nav>
+    </main>
+    <!--SVG Clouds - created by Andrew Mello-->
+    <svg width="35vw" height="21vw" style="max-width:420px;max-height:252px;animation-duration:20s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
+    <br>
+    <svg width="11vw" height="7vw" style="max-width:150px;max-height:90px;animation-duration:50s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
+    <br>
+    <svg width="33vw" height="20vw" style="max-width:330px;max-height:198px;animation-duration:35s;">
+        <rect y="40%" width="100%" height="55.5%" rx="16.6%" ry="27.7%" style="fill:white"></rect>
+        <circle cx="66.6%" cy="40%" r="28.3%" fill="white"></circle>
+        <circle cx="36.6%" cy="44.4%" r="20.2%" fill="white"></circle>
+    </svg>
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var status = "play";
+        var link = "";
+
+        $(document).ready(function() {
+            init();
+            animate(star, canvas, context);
+            animateTagLine();
+            initializeMouseOver();
+            initializeAnimations();
+            setInterval(animateTagLine, 4000);
+        });
+
+        function init() {
+            canvas = document.getElementById("myCanvas");
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
+        }
+
+        window.requestAnimFrame = (function(callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function initializeMouseOver() {
+            $('i').mouseover(function() {
+                if ($(this).hasClass('fa-user')) {
+                    link = "about";
+                }
+                if ($(this).hasClass('fa-rocket')) {
+                    link = "projects";
+                }
+                if ($(this).hasClass('fa-file-text')) {
+                    link = "resum‎é";
+                }
+                if ($(this).hasClass('fa-pencil')) {
+                    link = "contact";
+                }
+            });
+
+            $('i').mouseleave(function() {
+                link = "";
+            });
+        }
+
+        function initializeAnimations() {
+            $('#contact').click(function() {
+                $('#title').fadeOut('slow');
+                status = "stop-redraw";
+                $('body').css("background", "#9ACCF5");
+                $('svg').fadeIn('fast');
+                $('#myCanvas').fadeOut('slow');
+            });
+        }
+
+        function drawStar(star, context) {
+            var speed = 3 * star.r;
+            // pixels / second
+            if (star.x < canvas.width && star.y < canvas.height) {
+                star.x += speed;
+                star.y += speed * 0.6;
+            } else if (status === "play") {
+                var height = canvas.height / 2;
+                star.x = (Math.random() * 2 * canvas.width) - canvas.width;
+                star.y = -1 * height * Math.random() + (height / 2);
+                star.r = 6 * Math.random()
+            }
+
+            if (link.length == 0) {
+                context.beginPath();
+                context.arc(star.x, star.y, star.r, 0, 2 * Math.PI, false);
+                context.fillStyle = '#ffffff';
+                context.fill();
+                context.lineWidth = star.borderWidth;
+            } else {
+                var fontsize = 14 * star.r + 3;
+                context.font = fontsize + "px Open Sans";
+                context.fillStyle = "white";
+                context.fillText(link, star.x, star.y);
+            }
+        }
+
+        function animate(star, canvas, context) {
+            if (star.length <= 10) {
+                star.push(new createStar());
+            }
+            // clear
+            context.fillStyle = '#000000';
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            // update
+            for (var i = 0; i < star.length; i++) {
+                drawStar(star[i], context);
+            }
+            // draw rocket
+            //context.drawImage(rocketImg, rocket.x, rocket.y, rocket.width, rocket.height);
+            rocket.move();
+            // request new frame
+            requestAnimFrame(function() {
+                animate(star, canvas, context);
+            });
+        }
+        var tagline = [
+            "A man. A plan. Panama.",
+            "A man of measure.",
+            "gave a man a fish.",
+			"recited The Iliad completely in Wingdings",
+            "has hands like a gazelle.",
+            "The gilded goose.",
+            //"Juicy and complex",
+            "The oracle of time.",
+            "The Great Purveyor.",
+            //"Buffalo buffalo buffalo buffalo. Buffalo.",
+            "doesn't know why he makes guacamole in such great quantities",
+            "Thinly lather before basking in the sun",
+            "Wash. Rinse. Repeat.",
+            "The milk man.",
+            "7 / 10 would recommend to a friend",
+			"8 of 9 found this review helpful.",
+            "is rapidly running out of ideas for a subtitle."
+        ];
+
+        function createStar() {
+            this.x = (Math.random() * 2 * canvas.width) - canvas.width,
+                this.y = -1 * 100 * Math.random(),
+                this.r = 6 * Math.random() + 1
+        };
+
+        var star = [];
+
+        var rocket = {
+            x: canvas.width,
+            y: canvas.height * 3 / 4,
+            width: 200,
+            height: 201,
+            move: function() {
+                rocket.x -= Math.random() * 3 - 1;
+                rocket.y -= Math.random() * 3 - 1;
+                if (rocket.x + rocket.width < 0 || rocket.y + rocket.height < 0) {
+                    rocket.x = Math.random() * canvas.width;
+                    rocket.y = canvas.height;
+                    var random = Math.random();
+                    rocket.width = random * 300;
+                    rocket.height = random * 300;
+                }
+            }
+        }
+
+        var index = Math.floor(Math.random() * (tagline.length - 1));
+
+        function animateTagLine() {
+            $("h2").animate({
+                opacity: 0
+            }, 800, function() {
+                $(this).text(tagline[index % tagline.length])
+                    .animate({
+                        opacity: 1
+                    }, 800);
+                index++;
+            });
+        }
+    </script>
+</body>
+
+</html>
