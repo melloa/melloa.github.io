@@ -8,7 +8,7 @@
 
   <style>
     body {
-      background-image: linear-gradient(#25AAE1 92%, #EE2C61 92%, #EE2C61), linear-gradient(#EE2C61 71.5%, #FFC313 71.5%, #FFC313);
+      background-color: #25AAE1;
       background-size: 200vw 50%, 200vw 100%;
       background-repeat: no-repeat;
       color: white;
@@ -88,28 +88,32 @@
   <h1>Product Development Strategy</h1>
   <svg viewBox="0 0 220 245" preserveAspectRatio="xMidYMin meet"><g>
     <!-- Lines -->
-    <path id="ideation" d="M110 10 v70"></path>
-    <path id="electrical" d="M110 80 l-40 20 v40 l 40 20"></path>
-    <path id="mechanical" d="M110 80 l 40 20 v40 l-40 20"></path>
+    <path style="stroke:#524FA1;" d="M114 160 v70"></path>
+    <path style="stroke:#FFC313;" d="M114 10 v70"></path><path id="ideation" d="M110 10 v70"></path>
+    <path d="M114 82 v4 l 32 16 v36 l-33 16 v4" style="stroke:#EE2C61;"></path></path><path id="mechanical" d="M110 80 l 40 20 v40 l-40 20"></path>
+    <path d="M106 78 l-40 20 v44 l 40 20" style="stroke:#EE2C61;"></path><path id="electrical" d="M110 80 l-40 20 v40 l 40 20"></path>
     <!--<path id="firmware"   d="M60 80 h-40 l-20 10 v40 l10 10 v10 l30 20"></path>
     <path id="design" d="M110 80 h20 l10 10 v40 l-10 10 v10 l-30 20"></path>-->
     <path id="manufacturing" d="M110 160 v70"></path>
     <!-- Stops -->
-    <circle cx="110" cy="10" r="4" fill="#25AAE1"></circle>
-    <circle cx="110" cy="30" r="4" fill="#25AAE1"></circle>
-    <circle cx="110" cy="50" r="4" fill="#25AAE1"></circle>
-    <circle cx="110" cy="70" r="4" fill="#25AAE1"></circle>
-    <circle cx="70" cy="100" r="4" fill="#EE2C61"></circle>
-    <circle cx="70" cy="120" r="4" fill="#EE2C61"></circle>
-    <circle cx="70" cy="140" r="4" fill="#EE2C61"></circle>
-    <circle cx="150" cy="100" r="4" fill="#EE2C61"></circle>
-    <circle cx="150" cy="120" r="4" fill="#EE2C61"></circle>
-    <circle cx="150" cy="140" r="4" fill="#EE2C61"></circle>
-    <circle cx="110" cy="170" r="4" fill="#FFC313"></circle>
-    <circle cx="110" cy="190" r="4" fill="#FFC313"></circle>
-    <circle cx="110" cy="210" r="4" fill="#FFC313"></circle>
-    <circle cx="110" cy="230" r="4" fill="#FFC313"></circle>
-    <!-- Ideation Text -->
+    <circle cx="110" cy="10" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="10" r="5" fill="#FFC313"></circle>
+    <circle cx="110" cy="30" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="30" r="5" fill="#FFC313"></circle>
+    <circle cx="110" cy="50" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="50" r="5" fill="#FFC313"></circle>
+    <circle cx="110" cy="70" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="70" r="5" fill="#FFC313"></circle>
+    <circle cx="70" cy="100" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="70" cy="100" r="5" fill="#EE2C61"></circle>
+    <circle cx="70" cy="120" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="70" cy="120" r="5" fill="#EE2C61"></circle>
+    <circle cx="70" cy="140" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="70" cy="140" r="5" fill="#EE2C61"></circle>
+    <circle cx="150" cy="100" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="150" cy="100" r="5" fill="#EE2C61"></circle>
+    <circle cx="150" cy="120" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="150" cy="120" r="5" fill="#EE2C61"></circle>
+    <circle cx="150" cy="140" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="150" cy="140" r="5" fill="#EE2C61"></circle>
+    <circle cx="110" cy="170" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="170" r="5" fill="#524FA1"></circle>
+    <circle cx="110" cy="190" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="190" r="5" fill="#524FA1"></circle>
+    <circle cx="110" cy="210" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="210" r="5" fill="#524FA1"></circle>
+    <circle cx="110" cy="230" r="5.25" style="stroke:#95a5a6;"></circle><circle cx="110" cy="230" r="5" fill="#524FA1"></circle>
+    <rect x="56.5" y="48" width="32" height="0.25" fill="white" style="stroke-width: 2;stroke: #FFC313;"></rect>
+    <rect x="92" y="128" width="34" height="0.25" fill="white" style="stroke-width: 2;stroke: #EE2C61;"></rect>
+    <rect x="44.5" y="208" width="44" height="0.25" fill="white" style="stroke-width: 2;stroke: #524FA1;"></rect>
+     <!--Ideation Text -->
     <text x="120" y="12" fill="white">Problem Statement</text>
     <text x="120" y="32" fill="white">Research / Requirements</text>
     <text x="120" y="52" fill="white">First Concept</text>
@@ -147,8 +151,8 @@
     <text x="120" y="232" fill="white">Production</text>
     <!-- Heading Text -->
     <text class="heading" x="90" y="44" fill="white">Ideation</text>
-    <text class="heading" style="text-anchor:middle;" x="110" y="124" fill="white">Development</text>
-    <text class="heading" x="90" y="204" fill="white">Manufacturing</text>
+    <text class="heading" style="text-anchor:middle;" x="109" y="124" fill="white">Creation</text>
+    <text class="heading" x="90" y="204" fill="white">Production</text>
     <!-- Branch Text -->
     <text class="branch" x="20" y="87" fill="white">Works-Like</text>
     <text class="branch" x="200" y="87" style="text-anchor:end;" fill="white">Looks-Like</text>
