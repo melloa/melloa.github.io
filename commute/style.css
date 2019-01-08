@@ -1,0 +1,56 @@
+
+body {
+    background: #B6DC76; /* 75B09C DBFF76*/
+    font-family: Staatliches, sans-serif
+}
+
+table {
+    border-collapse: separate; 
+    border-spacing: 0.5em;
+    color: white;
+    font-size: 2em;
+    margin: auto;
+    padding: 20px;
+}
+
+th, td > span, button {
+    background: #484252;
+    font-weight: normal; 
+    margin-right: 20px;
+    padding: 2px 8px 0 8px;
+}
+
+tr {
+    margin-bottom: 16px;
+}
+
+input {
+    border: 5px solid #484252;
+    font-family: inherit;
+    font-size: 0.75em;
+    padding: 2px 8px 0px 8px;
+    text-align: center;
+    width: 220px;
+}
+
+hr {
+    background: #484252;
+    border: none;
+    height: 8px;
+    width: 391px;
+}
+
+button {
+    color: white;
+    width: 200px;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 2em;
+    display: block;
+    border: none;
+    margin: 30px auto;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+}

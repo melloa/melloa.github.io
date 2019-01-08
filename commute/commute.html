@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Credit Card Finder - Reward</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+        <script>
+            var caltrain_southbound_h = ["4:55", "5:25", "6:05", "6:15", "6:59", "7:05", "7:15", "7:59", "8:05", "8:15", "9:00", "9:45", "10:00", "11:00", "12:00"]
+            var caltrain_southbound_m = ["4:55", "5:25", "6:05", "6:15", "6:35", "6:45", "6:59", "7:15", "7:35", "7:45", "7:59", "8:15", "8:35", "8:45", "9:00", "9:45", "10:00", "11:00", "12:00"]
+            window.onload = function metronome() { 
+                var d = new Date();
+                hour = d.getHours();
+                minutes = d.getMinutes()
+                seconds = d.getSeconds()
+                period = 'AM';
+                
+                if(hour > 12) {
+                    hour = hour - 12;
+                    period = 'PM';
+                }
+
+                if(hour == 0) {
+                    hour = 12
+                }
+                
+                time = [pad(hour), pad(minutes), pad(seconds)].join(":") + " " + period;
+                document.getElementById('header').innerHTML = "The current time is: " + time
+
+                current_time = hour*3600 + minutes*60 + seconds
+                
+                difference = 999999;
+
+                caltrain_southbound_h.forEach(function(t) {
+                    ta = t.split(':');
+                    train_time = parseInt(ta[0])*3600 + parseInt(ta[1])*60
+                    diff = train_time - current_time
+
+                    if(diff > 600 && diff < difference) {
+                        difference = diff;
+                    }
+                });
+
+                d_hour =  Math.floor(difference / 3600);
+                d_minute =  Math.floor((difference - d_hour*3600) / 60);
+                d_sec = (difference - d_hour*3600 - d_minute*60)
+
+                document.getElementById('sf-hillsdale').value = [pad(d_hour), pad(d_minute), pad(d_sec)].join(":");
+
+                difference = 999999;
+
+                caltrain_southbound_m.forEach(function(t) {
+                    ta = t.split(':');
+                    train_time = parseInt(ta[0])*3600 + parseInt(ta[1])*60
+                    diff = train_time - current_time
+
+                    if(diff > 600 && diff < difference) {
+                        difference = diff;
+                    }
+                });
+
+                d_hour =  Math.floor(difference / 3600);
+                d_minute =  Math.floor((difference - d_hour*3600) / 60);
+                d_sec = (difference - d_hour*3600 - d_minute*60)
+
+                document.getElementById('sf-millibrae').value = [pad(d_hour), pad(d_minute), pad(d_sec)].join(":");
+
+                var t = setTimeout(function(){ metronome() }, 500);
+            }
+
+            function pad(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th colspan="2" id="header">The current time is: 08:57 AM</th>
+            </tr>
+            <tr>
+                <td><span>4th / King</span></td>
+                <td><input type="text" id="sf-hillsdale"></td>
+            </tr>
+            <tr>
+                <td><span>Hillsdale</span></td>
+                <td><input type="text" id="hillsdale"></td>
+            </tr>  
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td><span>4th / King</span></td>
+                <td><input type="text" id="sf-millibrae"></td>
+            </tr>
+            <tr>
+                <td><span>Millibrae</span></td>
+                <td><input type="text" id="millibrae"></td>
+            </tr>
+        </table>
+        <hr>
+        <button>Reverse</button>
+    </body>
+</html>
