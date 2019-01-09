@@ -8,7 +8,7 @@ table {
     border-collapse: separate; 
     border-spacing: 0.5em;
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
     margin: auto;
     padding: 20px;
 }
@@ -30,14 +30,14 @@ input {
     font-size: 0.75em;
     padding: 2px 8px 0px 8px;
     text-align: center;
-    width: 220px;
+    width: 90px;
 }
 
 hr {
     background: #484252;
     border: none;
     height: 8px;
-    width: 391px;
+    width: 333px;
 }
 
 button {
@@ -46,7 +46,7 @@ button {
     padding: 15px 0;
     text-transform: uppercase;
     font-family: inherit;
-    font-size: 2em;
+    font-size: 1.5em;
     display: block;
     border: none;
     margin: 30px auto;

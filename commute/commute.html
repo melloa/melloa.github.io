@@ -6,8 +6,65 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
         <script>
-            var caltrain_southbound_h = ["4:55", "5:25", "6:05", "6:15", "6:59", "7:05", "7:15", "7:59", "8:05", "8:15", "9:00", "9:45", "10:00", "11:00", "12:00"]
-            var caltrain_southbound_m = ["4:55", "5:25", "6:05", "6:15", "6:35", "6:45", "6:59", "7:15", "7:35", "7:45", "7:59", "8:15", "8:35", "8:45", "9:00", "9:45", "10:00", "11:00", "12:00"]
+            var current_time = 0;
+            var caltrain_southbound = {
+                "sf-hillsdale"      : ["4:55", "5:25", "6:05", "6:15", "6:59", "7:05", "7:15", "7:59", "8:05", "8:15", "8:45", "9:00", "9:45", "10:00", "11:00", "12:00"],
+                "arrives-hillsdale" : ["5:32", "6:03", "6:34", "6:54", "7:24", "7:35", "7:54", "8:24", "8:35", "8:54", "9:13", "9:39", "10:14", "10:39", "11:39", "12:39"],
+                "sf-millbrae"       : ["4:55", "5:25", "6:05", "6:15", "6:35", "6:45", "6:59", "7:15", "7:35", "7:45", "7:59", "8:15", "8:35", "8:45", "9:00", "9:45", "10:00", "11:00", "12:00"],
+                "arrives-millbrae"  : ["5:18", "5:48", "6:22", "6:39", "6:52", "7:04", "7:16", "7:39", "7:52", "8:04", "8:16", "8:39", "8:52", "9:02", "9:25", "10:01", "10:25", "11:25", "12:25"]
+            }
+
+            var commuteorg = []
+            var shuttle = ["7:30", "8:00", "8:30", "9:05", "9:40"]
+            var public_transit = {
+                'commute' : [],
+                'shuttle' : []
+            }
+
+            var caltrain = {
+                'north' : {},
+                'south' : {}
+            }
+
+            function initialize() {
+                Object.keys(caltrain_southbound).forEach(function(dest, i){
+                    caltrain['south'][dest] = []
+                    if (i % 2 == 0) {
+                        caltrain_southbound[dest].forEach(function(t, index) {
+                            ta = t.split(':');
+                            ata = caltrain_southbound[dest.replace('sf', 'arrives')][index].split(':');
+                            caltrain['south'][dest].push({
+                                'start' : parseInt(ta[0])*3600 + parseInt(ta[1])*60,
+                                'end' : parseInt(ata[0])*3600 + parseInt(ata[1])*60
+                            })
+                        })
+                    }
+                })
+
+                shuttle.forEach(function(t, index) {
+                    ta = t.split(':');
+                    public_transit['shuttle'].push(parseInt(ta[0])*3600 + parseInt(ta[1])*60);
+                })
+
+                commuteorg.forEach(function(t, index) {
+                    ta = t.split(':');
+                    public_transit['commute'].push(parseInt(ta[0])*3600 + parseInt(ta[1])*60);
+                })
+            }
+
+            function compare_times(time) {
+                return time['start'] - current_time > 0 ;
+            }
+
+            function number_to_time(n) {
+                hours =  Math.floor(n / 3600);
+                minutes =  Math.floor((n - hours*3600) / 60);
+                seconds = (n - hours*3600 - minutes*60)
+                return [pad(hours), pad(minutes), pad(seconds)].join(":")
+            }
+
+            initialize()
+
             window.onload = function metronome() { 
                 var d = new Date();
                 hour = d.getHours();
@@ -23,47 +80,28 @@
                 if(hour == 0) {
                     hour = 12
                 }
+               
+                current_time = hour*3600 + minutes*60 + seconds - 7200
                 
-                time = [pad(hour), pad(minutes), pad(seconds)].join(":") + " " + period;
+                time = number_to_time(current_time) + " " + period;
                 document.getElementById('header').innerHTML = "The current time is: " + time
 
-                current_time = hour*3600 + minutes*60 + seconds
+                // -------- UPDATE SF TIME -------- //
+                hillsdale = caltrain['south']['sf-hillsdale'].filter(compare_times).map(function(a){ return number_to_time(a['start'] - current_time) })
+                millbrae = caltrain['south']['sf-millbrae'].filter(compare_times).map(function(a){ return number_to_time(a['start'] - current_time) })
+                console.log(millbrae)
                 
-                difference = 999999;
+                document.getElementById('sf-hillsdale').value = hillsdale[0]
+                document.getElementById('sf-hillsdale-2').value = hillsdale[1]
 
-                caltrain_southbound_h.forEach(function(t) {
-                    ta = t.split(':');
-                    train_time = parseInt(ta[0])*3600 + parseInt(ta[1])*60
-                    diff = train_time - current_time
+                document.getElementById('sf-millbrae').value = millbrae[0]
+                document.getElementById('sf-millbrae-2').value = millbrae[1]
 
-                    if(diff > 600 && diff < difference) {
-                        difference = diff;
-                    }
-                });
-
-                d_hour =  Math.floor(difference / 3600);
-                d_minute =  Math.floor((difference - d_hour*3600) / 60);
-                d_sec = (difference - d_hour*3600 - d_minute*60)
-
-                document.getElementById('sf-hillsdale').value = [pad(d_hour), pad(d_minute), pad(d_sec)].join(":");
-
-                difference = 999999;
-
-                caltrain_southbound_m.forEach(function(t) {
-                    ta = t.split(':');
-                    train_time = parseInt(ta[0])*3600 + parseInt(ta[1])*60
-                    diff = train_time - current_time
-
-                    if(diff > 600 && diff < difference) {
-                        difference = diff;
-                    }
-                });
-
-                d_hour =  Math.floor(difference / 3600);
-                d_minute =  Math.floor((difference - d_hour*3600) / 60);
-                d_sec = (difference - d_hour*3600 - d_minute*60)
-
-                document.getElementById('sf-millibrae').value = [pad(d_hour), pad(d_minute), pad(d_sec)].join(":");
+                // SHUTTLE
+                zs = public_transit['shuttle'].filter(function(t) {
+                    return t - caltrain_southbound['arrives-hillsdale'][caltrain_southbound['sf-hillsdale'].indexOf(hillsdale[0])] > 0;
+                })
+                console.log(zs)
 
                 var t = setTimeout(function(){ metronome() }, 500);
             }
@@ -81,14 +119,16 @@
     <body>
         <table>
             <tr>
-                <th colspan="2" id="header">The current time is: 08:57 AM</th>
+                <th colspan="3" id="header">The current time is: 08:57 AM</th>
             </tr>
             <tr>
                 <td><span>4th / King</span></td>
                 <td><input type="text" id="sf-hillsdale"></td>
+                <td><input type="text" id="sf-hillsdale-2"></td>
             </tr>
             <tr>
                 <td><span>Hillsdale</span></td>
+                <td><input type="text" id="hillsdale"></td>
                 <td><input type="text" id="hillsdale"></td>
             </tr>  
         </table>
@@ -96,11 +136,13 @@
         <table>
             <tr>
                 <td><span>4th / King</span></td>
-                <td><input type="text" id="sf-millibrae"></td>
+                <td><input type="text" id="sf-millbrae"></td>
+                <td><input type="text" id="sf-millbrae-2"></td>
             </tr>
             <tr>
-                <td><span>Millibrae</span></td>
-                <td><input type="text" id="millibrae"></td>
+                <td><span>millbrae</span></td>
+                <td><input type="text" id="millbrae"></td>
+                <td><input type="text" id="millbrae"></td>
             </tr>
         </table>
         <hr>
